@@ -1,21 +1,26 @@
 package Giulio_Marra.entities;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
+import java.util.List;
+
+@Entity
 public class Route {
-    @GeneratedValue
     @Id
-    @OneToMany
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @OneToMany
+    @JoinColumn(name = "transport_id")
+    private List<Transport> transports;
+
     private String starting_area;
     private String terminal_area;
     private double avg_travel_time;
 
 
-    public Route() {}
-
+    public Route() {
+    }
 
     public Route(String starting_area, String terminal_area, double avg_travel_time) {
         this.starting_area = starting_area;
@@ -27,8 +32,12 @@ public class Route {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public List<Transport> getTransports() {
+        return transports;
+    }
+
+    public void setTransports(List<Transport> transports) {
+        this.transports = transports;
     }
 
     public String getStarting_area() {
@@ -53,5 +62,15 @@ public class Route {
 
     public void setAvg_travel_time(double avg_travel_time) {
         this.avg_travel_time = avg_travel_time;
+    }
+
+    @Override
+    public String toString() {
+        return "Route{" +
+                "id=" + id +
+                ", starting_area='" + starting_area + '\'' +
+                ", terminal_area='" + terminal_area + '\'' +
+                ", avg_travel_time=" + avg_travel_time +
+                '}';
     }
 }

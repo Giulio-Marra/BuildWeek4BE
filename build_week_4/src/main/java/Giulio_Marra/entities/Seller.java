@@ -2,12 +2,17 @@ package Giulio_Marra.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Seller {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @OneToMany(mappedBy = "seller")
     private long id;
+
+    @OneToMany(mappedBy = "seller")
+    private List<Ticket> tickets;
+    
 
     private String name;
     private boolean state;
@@ -27,6 +32,14 @@ public class Seller {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
     }
 
     public boolean isState() {

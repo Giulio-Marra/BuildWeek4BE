@@ -1,39 +1,58 @@
 package Giulio_Marra.entities;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.List;
 
+@Entity
 public class Transport {
-    @GeneratedValue
     @Id
-    @OneToMany
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    private String name;
+
+    @OneToMany(mappedBy = "transport")
+    private List<Ticket> ticket;
+
     private transport_type transport_type;
-    @OneToMany
+
     private boolean state;
+
     private int capacity;
+
     @ManyToOne
     private Route route;
+
+    @OneToMany(mappedBy = "transport")
     private List<Maintenance> maintenance_list;
 
 
-    public Transport(Giulio_Marra.entities.transport_type transport_type, boolean state, int capacity) {
+    public Transport(Giulio_Marra.entities.transport_type transport_type, boolean state, int capacity, String name) {
         this.transport_type = transport_type;
         this.state = state;
         this.capacity = capacity;
+        this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Ticket> getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(List<Ticket> ticket) {
+        this.ticket = ticket;
+    }
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public Giulio_Marra.entities.transport_type getTransport_type() {
@@ -74,5 +93,16 @@ public class Transport {
 
     public void setMaintenance_list(List<Maintenance> maintenance_list) {
         this.maintenance_list = maintenance_list;
+    }
+
+    @Override
+    public String toString() {
+        return "Transport{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", transport_type=" + transport_type +
+                ", state=" + state +
+                ", capacity=" + capacity +
+                '}';
     }
 }
