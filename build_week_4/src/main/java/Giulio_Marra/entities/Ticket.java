@@ -1,31 +1,59 @@
 package Giulio_Marra.entities;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
+@Entity
 public class Ticket {
-    @GeneratedValue
     @Id
-    @ManyToOne
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     private boolean used;
+
+    private LocalDate used_date;
+
     @ManyToOne
+    @JoinColumn(name = "seller_id")
     private Seller seller;
+
     @ManyToOne
+    @JoinColumn(name = "transport_id")
     private Transport transport;
-
-
 
 
     public Ticket() {
     }
 
-    public Ticket(boolean used, Seller seller) {
+    public Ticket(boolean used) {
         this.used = used;
-        this.seller = seller;
+        this.used_date = used_date_date();
     }
 
+    public LocalDate used_date_date() {
+        if (used == true) {
+            return LocalDate.now();
+        } else {
+            return null;
+        }
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public boolean isUsed() {
         return used;
@@ -33,6 +61,14 @@ public class Ticket {
 
     public void setUsed(boolean used) {
         this.used = used;
+    }
+
+    public LocalDate getUsed_date() {
+        return used_date;
+    }
+
+    public void setUsed_date(LocalDate used_date) {
+        this.used_date = used_date;
     }
 
     public Seller getSeller() {
@@ -43,16 +79,20 @@ public class Ticket {
         this.seller = seller;
     }
 
-    public Transport getMeans_of_transport() {
+    public Transport getTransport() {
         return transport;
     }
 
-    public void setMeans_of_transport(Transport transport) {
+    public void setTransport(Transport transport) {
         this.transport = transport;
     }
 
-    public long getId() {
-        return id;
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "id=" + id +
+                ", used=" + used +
+                ", used_date=" + used_date +
+                '}';
     }
-
 }

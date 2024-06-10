@@ -1,4 +1,4 @@
-package Giulio_Marra.entities;
+package Giulio_Marra.enums;
 
 public enum periodicity {
     WEEKLY,
