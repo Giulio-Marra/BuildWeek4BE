@@ -19,7 +19,7 @@ public class Card {
 
     @OneToOne
     @JoinColumn(name = "id_user")
-    private User user;
+    private Person user;
 
 
     public Card() {
@@ -58,11 +58,11 @@ public class Card {
         this.subscription = subscription;
     }
 
-    public User getUser() {
+    public Person getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Person user) {
         this.user = user;
     }
 

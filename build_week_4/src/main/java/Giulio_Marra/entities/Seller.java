@@ -5,25 +5,20 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Seller {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
+    protected long id;
+    protected String name;
     @OneToMany(mappedBy = "seller")
     private List<Ticket> tickets;
-    
-
-    private String name;
-    private boolean state;
-
 
     public Seller() {
     }
 
-    public Seller(String name, boolean state) {
+    public Seller(String name) {
         this.name = name;
-        this.state = state;
     }
 
     public String getName() {
@@ -42,14 +37,6 @@ public class Seller {
         this.tickets = tickets;
     }
 
-    public boolean isState() {
-        return state;
-    }
-
-    public void setState(boolean state) {
-        this.state = state;
-    }
-
     public long getId() {
         return id;
     }
@@ -63,7 +50,6 @@ public class Seller {
         return "Seller{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", state=" + state +
                 '}';
     }
 }

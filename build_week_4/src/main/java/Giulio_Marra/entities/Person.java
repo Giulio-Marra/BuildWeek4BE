@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-public class User {
+public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -19,11 +19,11 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Ticket> ticket;
 
-    public User() {
+    public Person() {
 
     }
 
-    public User(String name, String surname) {
+    public Person(String name, String surname) {
         this.name = name;
         this.surname = surname;
     }
