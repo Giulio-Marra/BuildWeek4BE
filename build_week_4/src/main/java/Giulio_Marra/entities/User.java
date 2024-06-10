@@ -16,7 +16,7 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Card card;
 
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     private List<Ticket> ticket;
 
     public User() {
@@ -70,8 +70,6 @@ public class User {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", card=" + card +
-                ", ticket=" + ticket +
                 '}';
     }
 }

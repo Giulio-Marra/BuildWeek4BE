@@ -1,63 +1,60 @@
 package Giulio_Marra.entities;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
 public class Card {
-    @GeneratedValue
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private LocalDate expiration_date;
     private LocalDate issue_date;
+
     @OneToOne
-    @JoinColumn (name = "id_subscription")
-    private long subscription_id;
+    @JoinColumn(name = "id_subscription")
+    private Subscription subscription;
+
     @OneToOne
-    @JoinColumn (name = "id_user")
+    @JoinColumn(name = "id_user")
     private User user;
 
 
-
-    public Card() {}
-
-    public Card(LocalDate expiration_date, LocalDate issue_date, long subscription_id, User user) {
-        this.expiration_date = expiration_date;
-        this.issue_date = issue_date;
-        this.subscription_id = subscription_id;
-        this.user = user;
+    public Card() {
     }
 
+    public Card(LocalDate expiration_date, LocalDate issue_date) {
+        this.expiration_date = expiration_date;
+        this.issue_date = issue_date;
+    }
 
     public long getId() {
         return id;
     }
 
-    public LocalDate getData_scadenza() {
+    public LocalDate getExpiration_date() {
         return expiration_date;
     }
 
-    public void setData_scadenza(LocalDate expiration_date) {
+    public void setExpiration_date(LocalDate expiration_date) {
         this.expiration_date = expiration_date;
     }
 
-    public LocalDate getData_emissione() {
+    public LocalDate getIssue_date() {
         return issue_date;
     }
 
-    public void setData_emissione(LocalDate issue_date) {
+    public void setIssue_date(LocalDate issue_date) {
         this.issue_date = issue_date;
     }
 
-    public long getId_abbonamento() {
-        return subscription_id;
+    public Subscription getSubscription() {
+        return subscription;
     }
 
-    public void setId_abbonamento(long subscription_id) {
-        this.subscription_id = subscription_id;
+    public void setSubscription(Subscription subscription) {
+        this.subscription = subscription;
     }
 
     public User getUser() {
@@ -66,5 +63,14 @@ public class Card {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "id=" + id +
+                ", expiration_date=" + expiration_date +
+                ", issue_date=" + issue_date +
+                '}';
     }
 }

@@ -1,20 +1,20 @@
 package Giulio_Marra.entities;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
+@Entity
 public class Seller {
-    @GeneratedValue
     @Id
-    @OneToMany
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @OneToMany(mappedBy = "seller")
     private long id;
+
     private String name;
     private boolean state;
 
 
-
-    public Seller () {}
+    public Seller() {
+    }
 
     public Seller(String name, boolean state) {
         this.name = name;
@@ -43,5 +43,14 @@ public class Seller {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Seller{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", state=" + state +
+                '}';
     }
 }
