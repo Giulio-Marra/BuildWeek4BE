@@ -13,6 +13,8 @@ public class Seller {
     protected String name;
     @OneToMany(mappedBy = "seller")
     private List<Ticket> tickets;
+    @OneToMany(mappedBy = "seller")
+    private List<Subscription> subscriptions;
 
     public Seller() {
     }
@@ -43,6 +45,14 @@ public class Seller {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public List<Subscription> getSubscriptions() {
+        return subscriptions;
+    }
+
+    public void setSubscriptions(List<Subscription> subscriptions) {
+        this.subscriptions = subscriptions;
     }
 
     @Override

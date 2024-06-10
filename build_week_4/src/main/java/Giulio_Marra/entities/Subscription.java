@@ -14,6 +14,10 @@ public class Subscription {
     @OneToOne(mappedBy = "subscription")
     private Card card;
 
+    @ManyToOne
+    @JoinColumn(name = "seller_id")
+    private Seller seller;
+
     @Enumerated(EnumType.STRING)
     private periodicity periodicity;
 
@@ -21,13 +25,13 @@ public class Subscription {
     private LocalDate renew_subscription;
 
     public Subscription() {
-
     }
 
-    public Subscription(Giulio_Marra.enums.periodicity periodicity, LocalDate start_subscription) {
+    public Subscription(Giulio_Marra.enums.periodicity periodicity, LocalDate start_subscription, Card card) {
         this.periodicity = periodicity;
         this.start_subscription = start_subscription;
         this.renew_subscription = calcDateRenew();
+        this.card = card;
     }
 
     private LocalDate calcDateRenew() {
@@ -48,6 +52,14 @@ public class Subscription {
 
     public void setCard(Card card) {
         this.card = card;
+    }
+
+    public Seller getSeller() {
+        return seller;
+    }
+
+    public void setSeller(Seller seller) {
+        this.seller = seller;
     }
 
     public Giulio_Marra.enums.periodicity getPeriodicity() {

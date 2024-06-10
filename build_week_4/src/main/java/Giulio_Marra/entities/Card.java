@@ -25,9 +25,10 @@ public class Card {
     public Card() {
     }
 
-    public Card(LocalDate expiration_date, LocalDate issue_date) {
+    public Card(LocalDate expiration_date, LocalDate issue_date, Person person) {
         this.expiration_date = expiration_date;
         this.issue_date = issue_date;
+        this.user = person;
     }
 
     public long getId() {
