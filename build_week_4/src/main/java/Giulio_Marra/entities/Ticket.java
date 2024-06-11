@@ -30,9 +30,11 @@ public class Ticket {
     public Ticket() {
     }
 
-    public Ticket(boolean used) {
+    public Ticket(boolean used, Seller seller, Person person) {
         this.used = used;
         this.used_date = used_date_date();
+        this.seller = seller;
+        this.user = person;
     }
 
     public LocalDate used_date_date() {
