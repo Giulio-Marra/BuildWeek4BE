@@ -11,7 +11,6 @@ public class Maintenance {
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "transport_id")
     private Transport transport;
 
     private LocalDate starting_date;
