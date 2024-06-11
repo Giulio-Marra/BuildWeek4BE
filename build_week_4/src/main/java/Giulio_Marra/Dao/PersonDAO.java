@@ -1,7 +1,6 @@
 package Giulio_Marra.Dao;
 
-import Giulio_Marra.entities.Person;
-import Giulio_Marra.entities.Transport;
+import Giulio_Marra.entities.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
@@ -31,5 +30,53 @@ public class PersonDAO {
         em.persist(transport);
         transaction.commit();
         System.out.println("L'utente " + transport.getTransport_type() + " è stato aggiunto correttamente al database");
+    }
+    public void saveRoute(Route route) {
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        em.persist(route);
+        transaction.commit();
+        System.out.println("Il mezzo è partito da: " + route.getStarting_area() + " è stato aggiunto correttamente al database");
+    }
+    public void saveSeller(Seller seller) {
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        em.persist(seller);
+        transaction.commit();
+        System.out.println("Il mezzo è partito da: " + seller.getName() + " è stato aggiunto correttamente al database");
+    }
+    public void saveCard(Card card) {
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        em.persist(card);
+        transaction.commit();
+        System.out.println("Il mezzo è partito da: " + card.getUser() + " è stato aggiunto correttamente al database");
+    }
+    public Seller getSeller(long id) {
+        return em.find(Seller.class, id);
+    }
+    public Card getCard(long id){
+        return em.find(Card.class,id);
+    }
+    public void saveSubscription(Subscription subscription) {
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        em.persist(subscription);
+        transaction.commit();
+        System.out.println("Il mezzo è partito da: " + subscription.getCard() + " è stato aggiunto correttamente al database");
+    }
+    public Route getRoute(long id){
+        return em.find(Route.class,id);
+    }
+
+    public void saveTicket(Ticket ticket) {
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        em.persist(ticket);
+        transaction.commit();
+        System.out.println("Il mezzo è partito da: " + ticket.getId() + " è stato aggiunto correttamente al database");
+    }
+    public Transport getTransport(long id){
+        return em.find(Transport.class,id);
     }
 }

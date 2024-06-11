@@ -29,12 +29,15 @@ public class Transport {
     @OneToMany(mappedBy = "transport")
     private List<Maintenance> maintenance_list;
 
+public Transport(){
 
-    public Transport(Giulio_Marra.entities.transport_type transport_type, boolean state, String name) {
+}
+    public Transport(Giulio_Marra.entities.transport_type transport_type, boolean state, String name, Route route) {
         this.transport_type = transport_type;
         this.state = state;
         this.capacity = totCapacity();
         this.name = name;
+        this.route=route;
     }
 
     public int totCapacity() {
