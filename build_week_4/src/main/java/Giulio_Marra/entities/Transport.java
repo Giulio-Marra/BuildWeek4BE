@@ -15,6 +15,7 @@ public class Transport {
     @OneToMany(mappedBy = "transport")
     private List<Ticket> ticket;
 
+    @Enumerated(EnumType.STRING)
     private transport_type transport_type;
 
     private boolean state;
@@ -22,17 +23,26 @@ public class Transport {
     private int capacity;
 
     @ManyToOne
+    @JoinColumn(name = "route_id")
     private Route route;
 
     @OneToMany(mappedBy = "transport")
     private List<Maintenance> maintenance_list;
 
 
-    public Transport(Giulio_Marra.entities.transport_type transport_type, boolean state, int capacity, String name) {
+    public Transport(Giulio_Marra.entities.transport_type transport_type, boolean state, String name) {
         this.transport_type = transport_type;
         this.state = state;
-        this.capacity = capacity;
+        this.capacity = totCapacity();
         this.name = name;
+    }
+
+    public int totCapacity() {
+        if (transport_type == Giulio_Marra.entities.transport_type.AUTOBUS) {
+            return 30;
+        } else {
+            return 20;
+        }
     }
 
     public String getName() {

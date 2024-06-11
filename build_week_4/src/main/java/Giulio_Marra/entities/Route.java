@@ -10,8 +10,7 @@ public class Route {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToMany
-    @JoinColumn(name = "transport_id")
+    @OneToMany(mappedBy = "route")
     private List<Transport> transports;
 
     private String starting_area;

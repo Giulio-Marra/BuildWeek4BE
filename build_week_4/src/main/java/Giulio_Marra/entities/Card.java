@@ -13,8 +13,7 @@ public class Card {
     private LocalDate expiration_date;
     private LocalDate issue_date;
 
-    @OneToOne
-    @JoinColumn(name = "id_subscription")
+    @OneToOne(mappedBy = "card")
     private Subscription subscription;
 
     @OneToOne

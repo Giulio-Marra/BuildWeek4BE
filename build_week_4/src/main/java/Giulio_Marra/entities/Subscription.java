@@ -11,7 +11,8 @@ public class Subscription {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne(mappedBy = "subscription")
+    @OneToOne
+    @JoinColumn(name = "id_card")
     private Card card;
 
     @ManyToOne
@@ -27,11 +28,12 @@ public class Subscription {
     public Subscription() {
     }
 
-    public Subscription(Giulio_Marra.enums.periodicity periodicity, LocalDate start_subscription, Card card) {
+    public Subscription(Giulio_Marra.enums.periodicity periodicity, LocalDate start_subscription, Card card, Seller seller) {
         this.periodicity = periodicity;
         this.start_subscription = start_subscription;
         this.renew_subscription = calcDateRenew();
         this.card = card;
+        this.seller = seller;
     }
 
     private LocalDate calcDateRenew() {
