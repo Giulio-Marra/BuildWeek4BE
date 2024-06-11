@@ -26,7 +26,7 @@ public class Ticket {
     @JoinColumn(name = "transport_id")
     private Transport transport;
 
-
+    private LocalDate emission_date;
     public Ticket() {
     }
 
@@ -36,6 +36,7 @@ public class Ticket {
         this.seller = seller;
         this.user = person;
         this.transport=transport;
+        this.emission_date = calculateEmissionDate(seller);
     }
 
     public LocalDate used_date_date() {
@@ -45,6 +46,17 @@ public class Ticket {
             return null;
         }
     }
+
+    private LocalDate calculateEmissionDate(Seller seller) {
+        if (seller instanceof Automatic_seller) {
+            // Logic for automatic seller
+            return LocalDate.now().minusDays(1); // Example logic
+        } else {
+            // Logic for regular seller
+            return LocalDate.now();
+        }
+    }
+
 
     public long getId() {
         return id;
@@ -96,6 +108,7 @@ public class Ticket {
                 "id=" + id +
                 ", used=" + used +
                 ", used_date=" + used_date +
+                ", emission_date=" + emission_date +
                 '}';
     }
 }

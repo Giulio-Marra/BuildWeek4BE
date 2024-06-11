@@ -47,7 +47,7 @@ public class PersonDAO {
         transaction.begin();
         em.persist(seller);
         transaction.commit();
-        System.out.println("Il mezzo è partito da: " + seller.getName() + " è stato aggiunto correttamente al database");
+        System.out.println("Il biglietto è stato acquistato da: " + seller.getName() + " e ora è possibile usarlo");
     }
     public void saveCard(Card card) {
         EntityTransaction transaction = em.getTransaction();
