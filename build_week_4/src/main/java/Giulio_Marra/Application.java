@@ -7,6 +7,7 @@ import Giulio_Marra.enums.periodicity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import org.hibernate.sql.Update;
 
 import java.time.LocalDate;
 
@@ -62,6 +63,12 @@ public class Application {
 
         Transport transport1=pd.getTransport(1);
         Ticket ticket_1=new Ticket(false,seller_1,person_1,transport1);
-        pd.saveTicket(ticket_1);
+        //pd.saveTicket(ticket_1);
+
+
+
+        Ticket ticketFromDB=pd.getTicket(4);
+        pd.stampTicket(ticketFromDB);
+
     }
 }
