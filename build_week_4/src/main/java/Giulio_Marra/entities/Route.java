@@ -11,7 +11,7 @@ public class Route {
     private long id;
 
     @OneToMany(mappedBy = "route")
-    private List<Transport> transports;
+    private List<Transport_route> transport_routes;
 
     private String starting_area;
     private String terminal_area;
@@ -31,12 +31,12 @@ public class Route {
         return id;
     }
 
-    public List<Transport> getTransports() {
-        return transports;
+    public List<Transport_route> getTransport_routes() {
+        return transport_routes;
     }
 
-    public void setTransports(List<Transport> transports) {
-        this.transports = transports;
+    public void setTransport_routes(List<Transport_route> transport_routes) {
+        this.transport_routes = transport_routes;
     }
 
     public String getStarting_area() {
