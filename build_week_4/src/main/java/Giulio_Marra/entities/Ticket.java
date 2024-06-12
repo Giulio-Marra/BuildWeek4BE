@@ -48,15 +48,8 @@ public class Ticket {
     }
 
     private LocalDate calculateEmissionDate(Seller seller) {
-        if (seller instanceof Automatic_seller) {
-
-            return LocalDate.now().minusDays(1);
-        } else {
-
-            return LocalDate.now();
-        }
+        return LocalDate.now();
     }
-
 
     public long getId() {
         return id;

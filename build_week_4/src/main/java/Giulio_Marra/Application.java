@@ -38,8 +38,8 @@ public class Application {
         em.persist(distributor);
         em.persist(authorized_seller);
         em.getTransaction().commit();
-        //pd.saveSeller(distributor);
-        //pd.saveSeller(authorized_seller);
+        pd.saveSeller(distributor);
+        pd.saveSeller(authorized_seller);
 
         //Rotta creata:
         Route route_1= new Route("Napoli","Roma",2.50);
@@ -68,7 +68,7 @@ public class Application {
 
 
         Ticket ticketFromDB=pd.getTicket(1);
-        //pd.stampTicket(ticketFromDB);
+        pd.stampTicket(ticketFromDB);
 
     }
 }
