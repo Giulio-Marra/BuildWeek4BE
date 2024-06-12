@@ -75,14 +75,13 @@ public class Application {
         //Creazione Utenti
         Person user_4=new Person("Francesco","Cossu");
         Person user_5=new Person("Franco"," Franchi");
-
-       //pd.savePerson(user_4);
-      // pd.savePerson(user_5);
+        pd.savePerson(user_4);
+        pd.savePerson(user_5);
 
         Card card_3 = new Card(LocalDate.now().plusYears(1), LocalDate.now(), user_4);
         Card card_4 = new Card(LocalDate.now().minusMonths(1), LocalDate.now().minusMonths(1), user_5);
-        //pd.saveCard(card_3);
-       // pd.saveCard(card_4);
+        pd.saveCard(card_3);
+        pd.saveCard(card_4);
 
 
 
@@ -92,8 +91,14 @@ public class Application {
         //pd.saveSubscription(subscription_3);
         //pd.saveSubscription(subscription_4);
 
-        Route route_2= new Route("Francia","Italia",20.50);
-        //pd.saveRoute(route_2);
+        Route route_2= new Route("Napoli","Milano",6);
+        Route route_3= new Route("Verona","Parma",3.4);
+        Route route_4= new Route("Milano","Scilla",11.30);
+        pd.saveRoute(route_2);
+        pd.saveRoute(route_3);
+        pd.saveRoute(route_4);
+
+
         Route routeTram = pd.getRoute(2);
         Transport transport_2 = new Transport(transport_type.TRAM, false, "Tram A", routeTram);
         Transport transport_3 = new Transport(transport_type.TRAM, false, "Tram B", routeTram);
