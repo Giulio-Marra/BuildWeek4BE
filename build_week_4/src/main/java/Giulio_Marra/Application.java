@@ -118,7 +118,7 @@ public class Application {
         long card_4_id = (12L);
         boolean isCard3Valid = pd.isSubscriptionValid(card_3_id);
         boolean isCard4Valid = pd.isSubscriptionValid(card_4_id);
-        System.out.println("Validità degli abbonamenti :");
+        System.out.println("Validità degli abbonamenti:");
         if (isCard3Valid) {
             System.out.println("L'abbonamento di " + user_4.getName() + " " + user_4.getSurname() + " è valido.");
         } else {
