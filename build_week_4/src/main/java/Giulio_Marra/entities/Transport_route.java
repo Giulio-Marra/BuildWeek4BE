@@ -3,6 +3,7 @@ package Giulio_Marra.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.Random;
 
 @Entity
 public class Transport_route {
@@ -30,8 +31,16 @@ public class Transport_route {
         this.transport = transport;
         this.route = route;
         this.date = date;
-        this.total_time = total_time;
+        this.total_time = randomVariation();
         this.frequency = frequency;
+    }
+
+    public int randomVariation() {
+        int number = route.getAvg_travel_time();
+        Random rand = new Random();
+        double variation = -0.20 + (0.20 - (-0.20)) * rand.nextDouble();
+        int result = (int) Math.round(number + (number * variation));
+        return result;
     }
 
     public long getId() {

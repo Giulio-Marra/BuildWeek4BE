@@ -7,7 +7,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 
-import java.time.LocalDate;
+import java.util.List;
 
 public class Transport_routeDAO {
 
@@ -39,15 +39,19 @@ public class Transport_routeDAO {
         return query.getSingleResult();
     }
 
-    public long countNumberOfTransportRoute(long transportId, long routeId, LocalDate startDate, LocalDate endDate) {
-        TypedQuery<Long> query = em.createQuery("SELECT COUNT(ts) FROM Transport_route ts WHERE ts.route.id = :routeId AND ts.transport.id = :transportId AND ts.date BETWEEN :startDate AND :endDate", Long.class);
+    public long countNumberOfTransportRoute(long transportId, long routeId) {
+        TypedQuery<Long> query = em.createQuery("SELECT COUNT(ts) FROM Transport_route ts WHERE ts.route.id = :routeId AND ts.transport.id = :transportId ", Long.class);
         query.setParameter("routeId", routeId);
         query.setParameter("transportId", transportId);
-        query.setParameter("startDate", startDate);
-        query.setParameter("endDate", endDate);
         return query.getSingleResult();
     }
 
+    public List<Double> allTotaleTimeTransportRoute(long transportId, long routeId) {
+        TypedQuery<Double> query = em.createQuery("SELECT ts.total_time FROM Transport_route ts WHERE ts.route.id = :routeId AND ts.transport.id = :transportId", Double.class);
+        query.setParameter("routeId", routeId);
+        query.setParameter("transportId", transportId);
+        return query.getResultList();
+    }
 
     public void saveRoute(Route route) {
         EntityTransaction transaction = em.getTransaction();

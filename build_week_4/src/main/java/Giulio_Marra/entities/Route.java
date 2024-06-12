@@ -15,13 +15,13 @@ public class Route {
 
     private String starting_area;
     private String terminal_area;
-    private double avg_travel_time;
+    private int avg_travel_time;
 
 
     public Route() {
     }
 
-    public Route(String starting_area, String terminal_area, double avg_travel_time) {
+    public Route(String starting_area, String terminal_area, int avg_travel_time) {
         this.starting_area = starting_area;
         this.terminal_area = terminal_area;
         this.avg_travel_time = avg_travel_time;
@@ -55,11 +55,11 @@ public class Route {
         this.terminal_area = terminal_area;
     }
 
-    public double getAvg_travel_time() {
+    public int getAvg_travel_time() {
         return avg_travel_time;
     }
 
-    public void setAvg_travel_time(double avg_travel_time) {
+    public void setAvg_travel_time(int avg_travel_time) {
         this.avg_travel_time = avg_travel_time;
     }
 
