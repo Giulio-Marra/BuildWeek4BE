@@ -66,6 +66,9 @@ public class Application {
        //pd.saveSubscription(subscription_1);
 
         Transport transport1=trd.getTransport(1);
+        Transport transport2=trd.getTransport(2);
+        Transport transport3=trd.getTransport(3);
+
         Ticket ticket_1=new Ticket(false,seller_1,person_1);
         //td.saveTicket(ticket_1);
         Ticket ticket_2=new Ticket(false,seller_1,person_1);
@@ -143,5 +146,21 @@ public class Application {
         System.out.println("Numero di biglietti emessi tra le due date:" + td.TicketsBetweenDates(Date.valueOf("2020-06-21").toLocalDate(), LocalDate.now()));
         System.out.println("Numero di abbonamenti emessi tra le due date:" + td.SubsBetweenDates(Date.valueOf("2020-06-21").toLocalDate(), LocalDate.now()));
 
+
+
+
+
+        Transport transport_6 = trd.getTransport(6);
+        Maintenance maint_1 = new Maintenance(Date.valueOf("2021-01-02").toLocalDate(), Date.valueOf("2021-02-17").toLocalDate(),transport1);
+        Maintenance maint_2= new Maintenance(Date.valueOf("2020-02-15").toLocalDate(), Date.valueOf("2020-07-21").toLocalDate(),transport_6);
+        Maintenance maint_3= new Maintenance(Date.valueOf("2020-04-12").toLocalDate(), Date.valueOf("2020-05-01").toLocalDate(),transport3);
+        Maintenance maint_4= new Maintenance(Date.valueOf("2020-06-21").toLocalDate(), Date.valueOf("2020-06-24").toLocalDate(),transport2);
+        Maintenance maint_5 = new Maintenance(Date.valueOf("2020-10-13").toLocalDate(), Date.valueOf("2020-11-20").toLocalDate(),transport1);
+        //trd.saveMaintenence(maint_1);
+        //trd.saveMaintenence(maint_2);
+        //trd.saveMaintenence(maint_3);
+        //trd.saveMaintenence(maint_4);
+        //trd.saveMaintenence(maint_5);
+        //trd.getDateOfMaintenance(6);
     }
 }

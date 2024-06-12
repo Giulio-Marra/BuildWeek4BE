@@ -19,20 +19,21 @@ public class Maintenance {
     public Maintenance() {
     }
 
-    public Maintenance(LocalDate starting_date, LocalDate ending_date) {
+    public Maintenance(LocalDate starting_date, LocalDate ending_date, Transport transport) {
         this.starting_date = starting_date;
         this.ending_date = ending_date;
+        this.transport = transport;
     }
 
     public long getId() {
         return id;
     }
 
-    public Transport getTransports() {
+    public Transport getTransport() {
         return transport;
     }
 
-    public void setTransports(Transport transports) {
+    public void setTransport(Transport transports) {
         this.transport = transports;
     }
 
