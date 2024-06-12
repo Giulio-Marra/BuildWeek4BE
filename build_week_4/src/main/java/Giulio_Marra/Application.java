@@ -8,6 +8,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class Application {
@@ -69,8 +70,8 @@ public class Application {
 
 
 
-        Ticket ticketFromDB=pd.getTicket(1);
-        //pd.stampTicket(ticketFromDB);
+        Ticket ticketFromDB=td.getTicket(1);
+        //td.stampTicket(ticketFromDB);
 
 
         //METODO PER IL CONTROLLO DEL ABBONAMENTO:
@@ -133,5 +134,10 @@ public class Application {
         } else {
             System.out.println("L'abbonamento di " + user_5.getName() + " " + user_5.getSurname() + " non è valido.");
         }
+
+        System.out.println(" Numero di biglietti emessi: " + td.NumberOfTicketBySeller(seller_1) + " numero abbonamenti emessi: " + td.NumberOfSubscriptionBySeller(seller_1));
+        System.out.println("Numero di biglietti emessi tra le due date:" + td.TicketsBetweenDates(Date.valueOf("2020-06-21").toLocalDate(), LocalDate.now()));
+        System.out.println("Numero di abbonamenti emessi tra le due date:" + td.SubsBetweenDates(Date.valueOf("2020-06-21").toLocalDate(), LocalDate.now()));
+
     }
 }

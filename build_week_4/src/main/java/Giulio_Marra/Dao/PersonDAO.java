@@ -83,17 +83,7 @@ public class PersonDAO {
     public Transport getTransport(long id){
         return em.find(Transport.class,id);
     }
-    public void stampTicket (Ticket ticket) {
-        TypedQuery<Ticket> query = em.createQuery("SELECT t FROM Ticket t WHERE t.id = :id", Ticket.class);
-        query.setParameter("id", ticket.getId());
-        Ticket result = query.getSingleResult();
-        result.setUsed(true);
-        result.setUsed_date(LocalDate.now());
-        em.getTransaction().begin();
-        em.merge(result);
-        em.getTransaction().commit();
 
-    }
     public Ticket getTicket(long id){
         return em.find(Ticket.class,id);
     }
