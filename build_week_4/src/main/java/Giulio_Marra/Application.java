@@ -73,8 +73,9 @@ public class Application {
         //METODO PER IL CONTROLLO DEL ABBONAMENTO:
 
         //Creazione Utenti
-Person user_4=new Person("Enrico","Scotti");
-Person user_5=new Person("Francesco","Vuoso");
+        Person user_4=new Person("Francesco","Cossu");
+        Person user_5=new Person("Franco"," Franchi");
+
        //pd.savePerson(user_4);
       // pd.savePerson(user_5);
 
