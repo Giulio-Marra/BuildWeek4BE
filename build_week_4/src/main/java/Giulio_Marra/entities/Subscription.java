@@ -24,7 +24,7 @@ public class Subscription {
 
     private LocalDate start_subscription;
     private LocalDate renew_subscription;
-
+    private LocalDate emission_date;
     public Subscription() {
     }
 
@@ -34,6 +34,7 @@ public class Subscription {
         this.renew_subscription = calcDateRenew();
         this.card = card;
         this.seller = seller;
+        this.emission_date = calculateEmissionDate(seller);
     }
 
     private LocalDate calcDateRenew() {
@@ -43,7 +44,9 @@ public class Subscription {
             return start_subscription.plusDays(30);
         }
     }
-
+    private LocalDate calculateEmissionDate(Seller seller) {
+        return LocalDate.now();
+    }
     public long getId() {
         return id;
     }

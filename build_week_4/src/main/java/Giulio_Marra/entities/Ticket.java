@@ -26,15 +26,17 @@ public class Ticket {
     @JoinColumn(name = "transport_id")
     private Transport transport;
 
-
+    private LocalDate emission_date;
     public Ticket() {
     }
 
-    public Ticket(boolean used, Seller seller, Person person) {
+    public Ticket(boolean used, Seller seller, Person person, Transport transport  ) {
         this.used = used;
         this.used_date = used_date_date();
         this.seller = seller;
         this.user = person;
+        this.transport=transport;
+        this.emission_date = calculateEmissionDate(seller);
     }
 
     public LocalDate used_date_date() {
@@ -43,6 +45,10 @@ public class Ticket {
         } else {
             return null;
         }
+    }
+
+    private LocalDate calculateEmissionDate(Seller seller) {
+        return LocalDate.now();
     }
 
     public long getId() {
@@ -95,6 +101,7 @@ public class Ticket {
                 "id=" + id +
                 ", used=" + used +
                 ", used_date=" + used_date +
+                ", emission_date=" + emission_date +
                 '}';
     }
 }
