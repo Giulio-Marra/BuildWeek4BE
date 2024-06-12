@@ -50,9 +50,9 @@ public class Ticket {
     private LocalDate calculateEmissionDate(Seller seller) {
         if (seller instanceof Automatic_seller) {
 
-            return LocalDate.now().minusDays(1); // Example logic
+            return LocalDate.now().minusDays(1);
         } else {
-            
+
             return LocalDate.now();
         }
     }

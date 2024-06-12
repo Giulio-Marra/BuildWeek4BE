@@ -68,7 +68,7 @@ public class Application {
 
 
         Ticket ticketFromDB=pd.getTicket(1);
-        pd.stampTicket(ticketFromDB);
+        //pd.stampTicket(ticketFromDB);
 
     }
 }
