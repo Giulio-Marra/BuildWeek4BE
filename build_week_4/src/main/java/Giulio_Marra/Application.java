@@ -66,13 +66,16 @@ public class Application {
        //pd.saveSubscription(subscription_1);
 
         Transport transport1=trd.getTransport(1);
-        Ticket ticket_1=new Ticket(false,seller_1,person_1,transport1);
-        //pd.saveTicket(ticket_1);
+        Ticket ticket_1=new Ticket(false,seller_1,person_1);
+        //td.saveTicket(ticket_1);
+        Ticket ticket_2=new Ticket(false,seller_1,person_1);
+        //td.saveTicket(ticket_2);
 
+        Ticket ticket_3=new Ticket(false,seller_1,person_1);
+        //td.saveTicket(ticket_3);
 
-
-        Ticket ticketFromDB=td.getTicket(1);
-        //td.stampTicket(ticketFromDB);
+        Ticket ticketFromDB=td.getTicket(4);
+        //td.stampTicket(ticketFromDB,transport1);
 
 
         //METODO PER IL CONTROLLO DEL ABBONAMENTO:

@@ -1,9 +1,6 @@
 package Giulio_Marra.Dao;
 
-import Giulio_Marra.entities.Card;
-import Giulio_Marra.entities.Seller;
-import Giulio_Marra.entities.Subscription;
-import Giulio_Marra.entities.Ticket;
+import Giulio_Marra.entities.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
@@ -74,12 +71,13 @@ public class TicketDao {
         query.setParameter("seller", seller);
         return (Long) query.getSingleResult();
     }
-    public void stampTicket (Ticket ticket) {
+    public void stampTicket (Ticket ticket, Transport transport) {
         TypedQuery<Ticket> query = em.createQuery("SELECT t FROM Ticket t WHERE t.id = :id", Ticket.class);
         query.setParameter("id", ticket.getId());
         Ticket result = query.getSingleResult();
         result.setUsed(true);
         result.setUsed_date(LocalDate.now());
+        result.setTransport(transport);
         em.getTransaction().begin();
         em.merge(result);
         em.getTransaction().commit();
