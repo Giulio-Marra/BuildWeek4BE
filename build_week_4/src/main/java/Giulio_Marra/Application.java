@@ -2,7 +2,7 @@ package Giulio_Marra;
 
 import Giulio_Marra.Dao.PersonDAO;
 import Giulio_Marra.entities.Transport;
-import Giulio_Marra.entities.transport_type;
+import Giulio_Marra.enums.Transport_type;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -17,7 +17,7 @@ public class Application {
 
         System.out.println("Hello ciao buongioro0sdfsdfsdf!");
 
-        Transport transport1 = new Transport(transport_type.TRAM, false, "THOMAS");
+        Transport transport1 = new Transport(Transport_type.TRAM, false, "THOMAS");
 
         pd.saveTrans(transport1);
 

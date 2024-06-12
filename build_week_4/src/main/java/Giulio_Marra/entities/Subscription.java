@@ -1,6 +1,6 @@
 package Giulio_Marra.entities;
 
-import Giulio_Marra.enums.periodicity;
+import Giulio_Marra.enums.Periodicity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -20,7 +20,7 @@ public class Subscription {
     private Seller seller;
 
     @Enumerated(EnumType.STRING)
-    private periodicity periodicity;
+    private Periodicity periodicity;
 
     private LocalDate start_subscription;
     private LocalDate renew_subscription;
@@ -28,7 +28,7 @@ public class Subscription {
     public Subscription() {
     }
 
-    public Subscription(Giulio_Marra.enums.periodicity periodicity, LocalDate start_subscription, Card card, Seller seller) {
+    public Subscription(Periodicity periodicity, LocalDate start_subscription, Card card, Seller seller) {
         this.periodicity = periodicity;
         this.start_subscription = start_subscription;
         this.renew_subscription = calcDateRenew();
@@ -37,7 +37,7 @@ public class Subscription {
     }
 
     private LocalDate calcDateRenew() {
-        if (periodicity == Giulio_Marra.enums.periodicity.WEEKLY) {
+        if (periodicity == Periodicity.WEEKLY) {
             return start_subscription.plusDays(7);
         } else {
             return start_subscription.plusDays(30);
@@ -64,11 +64,11 @@ public class Subscription {
         this.seller = seller;
     }
 
-    public Giulio_Marra.enums.periodicity getPeriodicity() {
+    public Periodicity getPeriodicity() {
         return periodicity;
     }
 
-    public void setPeriodicity(Giulio_Marra.enums.periodicity periodicity) {
+    public void setPeriodicity(Periodicity periodicity) {
         this.periodicity = periodicity;
     }
 

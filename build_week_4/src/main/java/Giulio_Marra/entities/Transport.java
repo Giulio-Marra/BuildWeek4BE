@@ -1,5 +1,6 @@
 package Giulio_Marra.entities;
 
+import Giulio_Marra.enums.Transport_type;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class Transport {
     private List<Ticket> ticket;
 
     @Enumerated(EnumType.STRING)
-    private transport_type transport_type;
+    private Transport_type transport_type;
 
     private boolean state;
 
@@ -27,10 +28,10 @@ public class Transport {
     private Route route;
 
     @OneToMany(mappedBy = "transport")
-    private List<Maintenance> maintenance_list;
+    private List<Maintenance> maintenances;
 
 
-    public Transport(Giulio_Marra.entities.transport_type transport_type, boolean state, String name) {
+    public Transport(Transport_type transport_type, boolean state, String name) {
         this.transport_type = transport_type;
         this.state = state;
         this.capacity = totCapacity();
@@ -38,7 +39,7 @@ public class Transport {
     }
 
     public int totCapacity() {
-        if (transport_type == Giulio_Marra.entities.transport_type.AUTOBUS) {
+        if (transport_type == Transport_type.AUTOBUS) {
             return 30;
         } else {
             return 20;
@@ -65,11 +66,11 @@ public class Transport {
         return id;
     }
 
-    public Giulio_Marra.entities.transport_type getTransport_type() {
+    public Transport_type getTransport_type() {
         return transport_type;
     }
 
-    public void setTransport_type(Giulio_Marra.entities.transport_type transport_type) {
+    public void setTransport_type(Transport_type transport_type) {
         this.transport_type = transport_type;
     }
 
@@ -98,11 +99,11 @@ public class Transport {
     }
 
     public List<Maintenance> getMaintenance_list() {
-        return maintenance_list;
+        return maintenances;
     }
 
     public void setMaintenance_list(List<Maintenance> maintenance_list) {
-        this.maintenance_list = maintenance_list;
+        this.maintenances = maintenance_list;
     }
 
     @Override

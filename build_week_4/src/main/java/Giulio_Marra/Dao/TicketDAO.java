@@ -5,11 +5,11 @@ import Giulio_Marra.entities.Subscription;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
-public class TicketDao {
+public class TicketDAO {
 
     private final EntityManager em;
 
-    public TicketDao(EntityManager em) {
+    public TicketDAO(EntityManager em) {
         this.em = em;
     }
 
