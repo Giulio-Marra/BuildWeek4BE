@@ -46,10 +46,8 @@ public class Subscription {
     }
     private LocalDate calculateEmissionDate(Seller seller) {
         if (seller instanceof Automatic_seller) {
-            // Logic for automatic seller
-            return LocalDate.now().minusDays(1); // Example logic
+            return LocalDate.now().minusDays(1);
         } else {
-            // Logic for regular seller
             return LocalDate.now();
         }
     }
