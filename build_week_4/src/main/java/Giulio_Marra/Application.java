@@ -1,7 +1,6 @@
 package Giulio_Marra;
 
-import Giulio_Marra.Dao.PersonDAO;
-import Giulio_Marra.Dao.TicketDao;
+import Giulio_Marra.Dao.*;
 import Giulio_Marra.entities.*;
 import Giulio_Marra.enums.periodicity;
 import jakarta.persistence.EntityManager;
@@ -18,6 +17,10 @@ public class Application {
         EntityManager em = emf.createEntityManager();
         PersonDAO pd = new PersonDAO(em);
         TicketDao td= new TicketDao(em);
+        CardDAO cd=new CardDAO(em);
+        RouteDAO rd=new RouteDAO(em);
+        SellerDAO sd=new SellerDAO(em);
+        SubscriptionDAO sbd=new SubscriptionDAO(em);
 
 
         //Creazione degli utenti:
