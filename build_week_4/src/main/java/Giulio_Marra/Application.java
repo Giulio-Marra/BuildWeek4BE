@@ -7,7 +7,7 @@ import Giulio_Marra.enums.periodicity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import org.hibernate.sql.Update;
+
 
 import java.time.LocalDate;
 
@@ -24,8 +24,7 @@ public class Application {
         Person user_1=new Person("Carlo","Patalano");
         Person user_2=new Person("Davide","Prelati");
         Person user_3=new Person("Giulio","Marra");
-        Person user_4=new Person("Francesco","Cossu");
-        Person user_5=new Person("Franco"," Franchi");
+
         //Salvataggio Utenti:
         //pd.savePerson(user_1);
         //pd.savePerson(user_2);
@@ -38,18 +37,22 @@ public class Application {
         Seller authorized_seller=new Seller("Negozio Autorizzato");
 
         //Salvataggio:
-        em.getTransaction().begin();
-        //em.persist(distributor);
-        //em.persist(authorized_seller);
-        em.getTransaction().commit();
+
+
         //pd.saveSeller(distributor);
         //pd.saveSeller(authorized_seller);
 
         //Rotta creata:
-        Route route_1= new Route("Roma termini","Roma tiburtina",0.35);
-        Route route_2= new Route("Napoli","Milano",6);
-        Route route_3= new Route("Verona","Parma",3.4);
-        Route route_4= new Route("Milano","Scilla",11.30);
+
+
+
+
+        //pd.saveSeller(distributor);
+        //pd.saveSeller(authorized_seller);
+
+        //Rotta creata Numero1:
+        Route route_1= new Route("Napoli","Roma",2.50);
+
         //Salvataggio Rotta
         //pd.saveRoute(route_1);
         //pd.saveRoute(route_2);
@@ -58,18 +61,15 @@ public class Application {
 
         //Mezzo di trasporto con rotta:
         Route route1Collegata=pd.getRoute(1);
-        Route route2Collegata=pd.getRoute(2);
-        Route route3Collegata=pd.getRoute(3);
-        Route route4Collegata=pd.getRoute(4);
+
         Transport transport_1=new Transport(transport_type.AUTOBUS,false,"Tomas",route1Collegata);
-        Transport transport_2=new Transport(transport_type.TRAM,false,"5",route2Collegata);
-        Transport transport_3=new Transport(transport_type.TRAM,false,"3",route3Collegata);
-        Transport transport_4=new Transport(transport_type.AUTOBUS,false,"600",route4Collegata);
 
         //pd.saveTrans(transport_1);
         //pd.saveTrans(transport_2);
         //pd.saveTrans(transport_3);
         //pd.saveTrans(transport_4);
+
+
 
 
 
@@ -81,8 +81,7 @@ public class Application {
 
        Card card_1=new Card(LocalDate.now().plusYears(1),LocalDate.now(),person_1);
        Card card_2=new Card(LocalDate.now().plusYears(1),LocalDate.now(),person_2);
-       Card card_3=new Card(LocalDate.now().plusYears(1),LocalDate.now(),person_3);
-       Card card_4=new Card(LocalDate.now().plusYears(1),LocalDate.now(),person_4);
+
        Card card_5=new Card(LocalDate.now().plusYears(1),LocalDate.now(),person_5);
        //pd.saveCard(card_1);
         //pd.saveCard(card_2);
@@ -99,8 +98,7 @@ public class Application {
         Seller seller_2=pd.getSeller(2);
        Subscription subscription_1=new Subscription(periodicity.MONTHLY,LocalDate.now(),card1,seller_1);
        Subscription subscription_2=new Subscription(periodicity.WEEKLY,LocalDate.now(),card2,seller_2);
-       Subscription subscription_3=new Subscription(periodicity.MONTHLY,LocalDate.now(),card3,seller_2);
-       Subscription subscription_4=new Subscription(periodicity.WEEKLY,LocalDate.now(),card4,seller_2);
+
        Subscription subscription_5=new Subscription(periodicity.MONTHLY,LocalDate.now(),card5,seller_1);
        //pd.saveSubscription(subscription_1);
         //pd.saveSubscription(subscription_2);
@@ -171,5 +169,66 @@ public class Application {
         Ticket ticketFromDB=pd.getTicket(1);
         //pd.stampTicket(ticketFromDB);
 
+
+        //METODO PER IL CONTROLLO DEL ABBONAMENTO:
+
+        //Creazione Utenti
+        Person user_4=new Person("Francesco","Cossu");
+        Person user_5=new Person("Franco"," Franchi");
+        //pd.savePerson(user_4);
+        //pd.savePerson(user_5);
+
+        Card card_3 = new Card(LocalDate.now().plusYears(1), LocalDate.now(), user_4);
+        Card card_4 = new Card(LocalDate.now().minusMonths(1), LocalDate.now().minusMonths(1), user_5);
+        //pd.saveCard(card_3);
+        //pd.saveCard(card_4);
+
+
+
+
+        Subscription subscription_3 = new Subscription(periodicity.MONTHLY, LocalDate.now(), card_3, distributor);
+        Subscription subscription_4 = new Subscription(periodicity.MONTHLY, LocalDate.now().minusMonths(1), card_4, distributor);
+        //pd.saveSubscription(subscription_3);
+        //pd.saveSubscription(subscription_4);
+
+        Route route_2= new Route("Napoli","Milano",6);
+        Route route_3= new Route("Verona","Parma",3.4);
+        Route route_4= new Route("Milano","Scilla",11.30);
+        //pd.saveRoute(route_2);
+        //pd.saveRoute(route_3);
+        //pd.saveRoute(route_4);
+
+
+
+        Route route2Collegata=pd.getRoute(2);
+        Route route3Collegata=pd.getRoute(3);
+        Route route4Collegata=pd.getRoute(4);
+
+        Transport transport_2=new Transport(transport_type.TRAM,false,"5",route2Collegata);
+        Transport transport_3=new Transport(transport_type.TRAM,false,"3",route3Collegata);
+        Transport transport_4=new Transport(transport_type.AUTOBUS,false,"600",route4Collegata);
+
+
+        //pd.saveTrans(transport_2);
+        //pd.saveTrans(transport_3);
+       // pd.saveTrans(transport_4);
+
+
+        long card_3_id = (11L);
+        long card_4_id = (12L);
+        boolean isCard3Valid = pd.isSubscriptionValid(card_3_id);
+        boolean isCard4Valid = pd.isSubscriptionValid(card_4_id);
+        System.out.println("Validità degli abbonamenti:");
+        if (isCard3Valid) {
+            System.out.println("L'abbonamento di " + user_4.getName() + " " + user_4.getSurname() + " è valido.");
+        } else {
+            System.out.println("L'abbonamento di " + user_4.getName() + " " + user_4.getSurname() + " non è valido.");
+        }
+
+        if (isCard4Valid) {
+            System.out.println("L'abbonamento di " + user_5.getName() + " " + user_5.getSurname() + " è valido.");
+        } else {
+            System.out.println("L'abbonamento di " + user_5.getName() + " " + user_5.getSurname() + " non è valido.");
+        }
     }
 }

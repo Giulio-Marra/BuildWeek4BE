@@ -36,12 +36,14 @@ public class Subscription {
         this.seller = seller;
         this.emission_date = calculateEmissionDate(seller);
     }
-
     private LocalDate calcDateRenew() {
         if (periodicity == Giulio_Marra.enums.periodicity.WEEKLY) {
-            return start_subscription.plusDays(7);
+            return start_subscription.plusWeeks(1);
+        } else if (periodicity == Giulio_Marra.enums.periodicity.MONTHLY) {
+            return start_subscription.plusMonths(1);
         } else {
-            return start_subscription.plusDays(30);
+
+            return start_subscription;
         }
     }
     private LocalDate calculateEmissionDate(Seller seller) {
