@@ -2,6 +2,7 @@ package Giulio_Marra;
 
 import Giulio_Marra.Dao.PersonDAO;
 import Giulio_Marra.Dao.TicketDao;
+import Giulio_Marra.Dao.TransportDAO;
 import Giulio_Marra.entities.*;
 import Giulio_Marra.enums.periodicity;
 import jakarta.persistence.EntityManager;
@@ -18,6 +19,20 @@ public class Application {
         EntityManager em = emf.createEntityManager();
         PersonDAO pd = new PersonDAO(em);
         TicketDao td= new TicketDao(em);
+        TransportDAO trd = new TransportDAO(em);
+
+        Transport transport__1 = pd.getTransport(1);
+        Maintenance maint_1 = new Maintenance(LocalDate.now(), LocalDate.now().plusDays(1),transport__1);
+        Maintenance maint_2= new Maintenance(LocalDate.now().minusDays(10), LocalDate.now().minusDays(9),transport__1);
+        Maintenance maint_3= new Maintenance(LocalDate.now().minusDays(20), LocalDate.now().minusDays(19),transport__1);
+        Maintenance maint_4= new Maintenance(LocalDate.now().minusDays(30), LocalDate.now().minusDays(29),transport__1);
+        Maintenance maint_5 = new Maintenance(LocalDate.now(), LocalDate.now().plusDays(1),transport__1);
+        //trd.saveMaintenence(maint_1);
+        //trd.saveMaintenence(maint_2);
+        //trd.saveMaintenence(maint_3);
+        //trd.saveMaintenence(maint_4);
+        //trd.saveMaintenence(maint_5);
+        trd.getDateOfMaintenance(1);
 
 
         //Creazione degli utenti:
@@ -68,6 +83,7 @@ public class Application {
         //pd.saveTrans(transport_2);
         //pd.saveTrans(transport_3);
         //pd.saveTrans(transport_4);
+
 
 
 
@@ -138,31 +154,31 @@ public class Application {
         Ticket ticket_23=new Ticket(false, seller1, person_5, transport2);
         Ticket ticket_24=new Ticket(false, seller1, person_5, transport2);
         Ticket ticket_25=new Ticket(false, seller2, person_5, transport3);
-        pd.saveTicket(ticket_1);
-        pd.saveTicket(ticket_2);
-        pd.saveTicket(ticket_3);
-        pd.saveTicket(ticket_4);
-        pd.saveTicket(ticket_5);
-        pd.saveTicket(ticket_6);
-        pd.saveTicket(ticket_7);
-        pd.saveTicket(ticket_8);
-        pd.saveTicket(ticket_9);
-        pd.saveTicket(ticket_10);
-        pd.saveTicket(ticket_11);
-        pd.saveTicket(ticket_12);
-        pd.saveTicket(ticket_13);
-        pd.saveTicket(ticket_14);
-        pd.saveTicket(ticket_15);
-        pd.saveTicket(ticket_16);
-        pd.saveTicket(ticket_17);
-        pd.saveTicket(ticket_18);
-        pd.saveTicket(ticket_19);
-        pd.saveTicket(ticket_20);
-        pd.saveTicket(ticket_21);
-        pd.saveTicket(ticket_22);
-        pd.saveTicket(ticket_23);
-        pd.saveTicket(ticket_24);
-        pd.saveTicket(ticket_25);
+        //pd.saveTicket(ticket_1);
+        //pd.saveTicket(ticket_2);
+        //pd.saveTicket(ticket_3);
+        //pd.saveTicket(ticket_4);
+        //pd.saveTicket(ticket_5);
+        //pd.saveTicket(ticket_6);
+        //pd.saveTicket(ticket_7);
+        //pd.saveTicket(ticket_8);
+        //pd.saveTicket(ticket_9);
+        //pd.saveTicket(ticket_10);
+        //pd.saveTicket(ticket_11);
+        //pd.saveTicket(ticket_12);
+        //pd.saveTicket(ticket_13);
+        //pd.saveTicket(ticket_14);
+        //pd.saveTicket(ticket_15);
+        //pd.saveTicket(ticket_16);
+        //pd.saveTicket(ticket_17);
+        //pd.saveTicket(ticket_18);
+        //pd.saveTicket(ticket_19);
+        //pd.saveTicket(ticket_20);
+        //pd.saveTicket(ticket_21);
+        //pd.saveTicket(ticket_22);
+        //pd.saveTicket(ticket_23);
+        //pd.saveTicket(ticket_24);
+        //pd.saveTicket(ticket_25);
 
 
 
