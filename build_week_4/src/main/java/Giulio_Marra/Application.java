@@ -22,6 +22,7 @@ public class Application {
         RouteDAO rd=new RouteDAO(em);
         SellerDAO sd=new SellerDAO(em);
         SubscriptionDAO sbd=new SubscriptionDAO(em);
+        TransportDAO trd=new TransportDAO(em);
 
 
         //Creazione degli utenti:
@@ -48,7 +49,7 @@ public class Application {
         //pd.saveRoute(route_1);
 
         //Mezzo di trasporto con rotta:
-        Route routeCollegata=pd.getRoute(1);
+        Route routeCollegata=rd.getRoute(1);
         Transport transport_1=new Transport(transport_type.AUTOBUS,false,"Tomas",routeCollegata);
         //pd.saveTrans(transport_1);
 
@@ -57,14 +58,14 @@ public class Application {
 
 
         Person person_1= pd.getPerson(1);
-        Card Card_2=pd.getCard(1);
-        Seller seller_1=pd.getSeller(1);
+        Card Card_2=cd.getCard(1);
+        Seller seller_1=sd.getSeller(1);
        Card card_1=new Card(LocalDate.now().plusYears(1),LocalDate.now(),person_1);
        //pd.saveCard(card_1);
        Subscription subscription_1=new Subscription(periodicity.MONTHLY,LocalDate.now(),Card_2,seller_1);
        //pd.saveSubscription(subscription_1);
 
-        Transport transport1=pd.getTransport(1);
+        Transport transport1=trd.getTransport(1);
         Ticket ticket_1=new Ticket(false,seller_1,person_1,transport1);
         //pd.saveTicket(ticket_1);
 
@@ -104,9 +105,9 @@ public class Application {
 
 
 
-        Route route2Collegata=pd.getRoute(2);
-        Route route3Collegata=pd.getRoute(3);
-        Route route4Collegata=pd.getRoute(4);
+        Route route2Collegata=rd.getRoute(2);
+        Route route3Collegata=rd.getRoute(3);
+        Route route4Collegata=rd.getRoute(4);
 
         Transport transport_2=new Transport(transport_type.TRAM,false,"5",route2Collegata);
         Transport transport_3=new Transport(transport_type.TRAM,false,"3",route3Collegata);

@@ -26,6 +26,13 @@ public class TicketDao {
         transaction.commit();
         System.out.println("L'utente " + card.getUser() + " è stato aggiunto correttamente al database");
     }
+    public void saveTicket(Ticket ticket) {
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        em.persist(ticket);
+        transaction.commit();
+        System.out.println("Il biglietto selezionato con l' id è: " + ticket.getId() + " è stato aggiunto correttamente al database");
+    }
 
     public Card getCard(long id) {
         return em.find(Card.class, id);
