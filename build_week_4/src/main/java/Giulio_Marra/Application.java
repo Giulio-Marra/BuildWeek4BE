@@ -99,11 +99,19 @@ public class Application {
         pd.saveRoute(route_4);
 
 
-        Route routeTram = pd.getRoute(2);
-        Transport transport_2 = new Transport(transport_type.TRAM, false, "Tram A", routeTram);
-        Transport transport_3 = new Transport(transport_type.TRAM, false, "Tram B", routeTram);
-        //pd.saveTrans(transport_2);
-        //pd.saveTrans(transport_3);
+
+        Route route2Collegata=pd.getRoute(2);
+        Route route3Collegata=pd.getRoute(3);
+        Route route4Collegata=pd.getRoute(4);
+
+        Transport transport_2=new Transport(transport_type.TRAM,false,"5",route2Collegata);
+        Transport transport_3=new Transport(transport_type.TRAM,false,"3",route3Collegata);
+        Transport transport_4=new Transport(transport_type.AUTOBUS,false,"600",route4Collegata);
+
+
+        pd.saveTrans(transport_2);
+        pd.saveTrans(transport_3);
+        pd.saveTrans(transport_4);
 
 
         long card_3_id = (11L);
