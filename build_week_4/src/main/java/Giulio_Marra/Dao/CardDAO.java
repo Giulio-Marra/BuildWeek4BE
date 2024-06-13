@@ -4,6 +4,8 @@ import Giulio_Marra.entities.Card;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
+import java.time.LocalDate;
+
 public class CardDAO {
     private final EntityManager em;
 
@@ -21,6 +23,17 @@ public class CardDAO {
 
     public Card getCard(long id) {
         return em.find(Card.class, id);
+    }
+
+
+    public boolean isCardExpired(long card_id){
+        Card card = getCard(card_id);
+        if(card == null){
+            return true;
+        }
+        LocalDate currentDate = LocalDate.now();
+        LocalDate expirationDate = card.getExpiration_date();
+        return currentDate.isAfter(expirationDate);
     }
 
 }

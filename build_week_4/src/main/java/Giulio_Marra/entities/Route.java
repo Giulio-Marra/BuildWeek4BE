@@ -14,6 +14,9 @@ public class Route {
     private List<Transport_route> transport_routes;
 
     @OneToMany(mappedBy = "route")
+    private List<Transport> transports;
+
+    @OneToMany(mappedBy = "route")
     private List<Ticket> tickets;
 
     private String starting_area;

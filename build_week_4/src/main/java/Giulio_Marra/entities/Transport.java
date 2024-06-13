@@ -23,6 +23,10 @@ public class Transport {
 
     private int capacity;
 
+    @ManyToOne
+    @JoinColumn(name = "route_id")
+    private Route route;
+
     @OneToMany(mappedBy = "transport")
     private List<Transport_route> transport_route;
 
@@ -33,11 +37,12 @@ public class Transport {
 
     }
 
-    public Transport(Transport_type transport_type, boolean state, String name) {
+    public Transport(Transport_type transport_type, boolean state, String name, Route route) {
         this.transport_type = transport_type;
         this.state = state;
         this.capacity = totCapacity();
         this.name = name;
+        this.route = route;
     }
 
 
@@ -112,11 +117,11 @@ public class Transport {
     @Override
     public String toString() {
         return "Transport{" +
-                "id=" + id +
-                ", name='" + name + ' ' +
-        ", transport_type=" + transport_type +
-                ", state=" + state +
-                ", capacity=" + capacity +
+                "id = " + id +
+                ", name = '" + name + ' ' +
+        ", transport_type = " + transport_type +
+                ", manutenzione = " + state +
+                ", capacity = " + capacity +
                 '}';
     }
 }

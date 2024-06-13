@@ -31,11 +31,19 @@ public class Ticket {
     public Ticket() {
     }
 
-    public Ticket(boolean used, Seller seller) {
+    public Ticket(boolean used, Seller seller, Route route) {
         this.used = used;
         this.used_date = used_date_date();
         this.seller = seller;
         this.emission_date = calculateEmissionDate(seller);
+        this.route = route;
+    }
+    public Ticket( Seller seller, Route route) {
+        this.used = false;
+        this.used_date = used_date_date();
+        this.seller = seller;
+        this.emission_date = calculateEmissionDate(seller);
+        this.route = route;
     }
 
     public LocalDate used_date_date() {

@@ -9,9 +9,11 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public class Application {
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("build_week_4");
+    static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         EntityManager em = emf.createEntityManager();
@@ -24,7 +26,7 @@ public class Application {
         TransportDAO trd = new TransportDAO(em);
         Transport_routeDAO trans_rD = new Transport_routeDAO(em);
 
-        //Creazione degli utenti:
+       /* //Creazione degli utenti:
         Person user_1 = new Person("Carlo", "Patalano");
         Person user_2 = new Person("Davide", "Prelati");
         Person user_3 = new Person("Giulio", "Marra");
@@ -179,8 +181,15 @@ Card card_7=new Card(LocalDate.now().minusMonths(2),LocalDate.now().minusMonths(
         trans_rD.saveTransportRoute(transport_route);
 
         System.out.println(trans_rD.countNumberOfTransportRoute(1, 1));
-        System.out.println(trans_rD.allTotaleTimeTransportRoute(1, 1));
+        System.out.println(trans_rD.allTotaleTimeTransportRoute(1, 1));*/
+
+        sd.printAllSellers();
+        rd.printAllRoutes();
+        //trd.getTransportsByRouteID(1);
+        td.printTicketsByRouteID(1);
 
 
     }
+
+
 }
