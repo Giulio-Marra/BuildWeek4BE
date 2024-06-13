@@ -1,5 +1,6 @@
 package Giulio_Marra.entities;
 
+import Giulio_Marra.enums.Transport_type;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -16,32 +17,32 @@ public class Transport {
     private List<Ticket> ticket;
 
     @Enumerated(EnumType.STRING)
-    private transport_type transport_type;
+    private Transport_type transport_type;
 
     private boolean state;
 
     private int capacity;
 
-    @ManyToOne
-    @JoinColumn(name = "route_id")
-    private Route route;
+    @OneToMany(mappedBy = "transport")
+    private List<Transport_route> transport_route;
 
     @OneToMany(mappedBy = "transport")
     private List<Maintenance> maintenance_list;
 
-public Transport(){
+    public Transport() {
 
-}
-    public Transport(Giulio_Marra.entities.transport_type transport_type, boolean state, String name, Route route) {
+    }
+
+    public Transport(Transport_type transport_type, boolean state, String name) {
         this.transport_type = transport_type;
         this.state = state;
         this.capacity = totCapacity();
         this.name = name;
-        this.route=route;
     }
 
+
     public int totCapacity() {
-        if (transport_type == Giulio_Marra.entities.transport_type.AUTOBUS) {
+        if (transport_type == Transport_type.AUTOBUS) {
             return 30;
         } else {
             return 20;
@@ -68,11 +69,11 @@ public Transport(){
         return id;
     }
 
-    public Giulio_Marra.entities.transport_type getTransport_type() {
+    public Transport_type getTransport_type() {
         return transport_type;
     }
 
-    public void setTransport_type(Giulio_Marra.entities.transport_type transport_type) {
+    public void setTransport_type(Transport_type transport_type) {
         this.transport_type = transport_type;
     }
 
@@ -92,12 +93,12 @@ public Transport(){
         this.capacity = capacity;
     }
 
-    public Route getRoute() {
-        return route;
+    public List<Transport_route> getTransport_route() {
+        return transport_route;
     }
 
-    public void setRoute(Route route) {
-        this.route = route;
+    public void setTransport_route(List<Transport_route> transport_route) {
+        this.transport_route = transport_route;
     }
 
     public List<Maintenance> getMaintenance_list() {
@@ -112,8 +113,8 @@ public Transport(){
     public String toString() {
         return "Transport{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", transport_type=" + transport_type +
+                ", name='" + name + ' ' +
+        ", transport_type=" + transport_type +
                 ", state=" + state +
                 ", capacity=" + capacity +
                 '}';

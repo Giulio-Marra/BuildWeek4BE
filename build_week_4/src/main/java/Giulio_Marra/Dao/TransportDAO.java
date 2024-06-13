@@ -2,19 +2,29 @@ package Giulio_Marra.Dao;
 
 import Giulio_Marra.entities.Maintenance;
 import Giulio_Marra.entities.Transport;
-import Giulio_Marra.entities.transport_type;
+import Giulio_Marra.enums.Transport_type;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
+
 import java.time.LocalDate;
 import java.util.List;
 
 public class TransportDAO {
     private final EntityManager em;
-    public TransportDAO(EntityManager em) {
+    public TransportDAO(EntityManager em){
         this.em = em;
     }
-
+    public Transport getTransport(long id){
+        return em.find(Transport.class,id);
+    }
+    public void saveTrans(Transport transport) {
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        em.persist(transport);
+        transaction.commit();
+        System.out.println("L'utente " + transport.getTransport_type() + " è stato aggiunto correttamente al database");
+    }
     public void saveMaintenence(Maintenance maintenence) {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
@@ -22,7 +32,6 @@ public class TransportDAO {
         transaction.commit();
         System.out.println("Il mezzo " + maintenence.getTransport() + " è in manutenzione al database");
     }
-
     public void getDateOfMaintenance(long id) {
         TypedQuery<Object[]> query = em.createQuery(
                 "SELECT " +
@@ -34,7 +43,7 @@ public class TransportDAO {
                         "m.ending_date " +
                         "FROM Transport t " +
                         "LEFT JOIN t.maintenance_list m " +
-                        "WHERE t.id =:id " +  // Utilizzo della relazione definita nella classe Transport
+                        "WHERE t.id =:id " +
                         "ORDER BY t.id, m.starting_date",
                 Object[].class);
         query.setParameter("id", id);
@@ -43,7 +52,7 @@ public class TransportDAO {
         for (Object[] result : results) {
             Long transportId = (Long) result[0];
             String transportName = (String) result[1];
-            transport_type transportType = (transport_type) result[2]; // Cast to enum type
+            Transport_type transportType = (Transport_type) result[2];
             Boolean currentState = (Boolean) result[3];
             LocalDate maintenanceStartDate = (LocalDate) result[4];
             LocalDate maintenanceEndDate = (LocalDate) result[5];
