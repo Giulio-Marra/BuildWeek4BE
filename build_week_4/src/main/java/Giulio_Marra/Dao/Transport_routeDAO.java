@@ -1,5 +1,6 @@
 package Giulio_Marra.Dao;
 
+import Giulio_Marra.entities.Transport;
 import Giulio_Marra.entities.Transport_route;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -49,6 +50,13 @@ public class Transport_routeDAO {
         query.setParameter("transportId", transportId);
         return query.getResultList();
     }
-
+    public List<Transport_route> getTransportRoutesByTransport(Transport transport) {
+        TypedQuery<Transport_route> query = em.createQuery(
+                "SELECT tr FROM Transport_route tr WHERE tr.transport = :transport",
+                Transport_route.class
+        );
+        query.setParameter("transport", transport);
+        return query.getResultList();
+    }
 
 }

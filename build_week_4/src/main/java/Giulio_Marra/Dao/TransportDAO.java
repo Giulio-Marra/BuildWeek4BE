@@ -18,6 +18,13 @@ public class TransportDAO {
     public Transport getTransport(long id){
         return em.find(Transport.class,id);
     }
+
+
+    public List<Transport> getTransportsInMaintenance() {
+        TypedQuery<Transport> query = em.createQuery("SELECT m.transport FROM Maintenance m WHERE m.ending_date >= CURRENT_DATE", Transport.class);
+        return query.getResultList();
+    }
+
     public void saveTrans(Transport transport) {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
