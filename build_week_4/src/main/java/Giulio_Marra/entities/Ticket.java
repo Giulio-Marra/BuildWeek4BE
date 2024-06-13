@@ -30,12 +30,12 @@ public class Ticket {
     public Ticket() {
     }
 
-    public Ticket(boolean used, Seller seller, Person person, Transport transport  ) {
+    public Ticket(boolean used, Seller seller, Person person  ) {
         this.used = used;
         this.used_date = used_date_date();
         this.seller = seller;
         this.user = person;
-        this.transport=transport;
+
         this.emission_date = calculateEmissionDate(seller);
     }
 
