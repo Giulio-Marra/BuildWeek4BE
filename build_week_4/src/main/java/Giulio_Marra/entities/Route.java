@@ -13,6 +13,9 @@ public class Route {
     @OneToMany(mappedBy = "route")
     private List<Transport_route> transport_routes;
 
+    @OneToMany(mappedBy = "route")
+    private List<Ticket> tickets;
+
     private String starting_area;
     private String terminal_area;
     private int avg_travel_time;
@@ -68,8 +71,8 @@ public class Route {
         return "Route{" +
                 "id=" + id +
                 ", starting_area='" + starting_area + ' ' +
-        ", terminal_area='" + terminal_area + ' ' +
-        ", avg_travel_time=" + avg_travel_time +
+                ", terminal_area='" + terminal_area + ' ' +
+                ", avg_travel_time=" + avg_travel_time +
                 '}';
     }
 }

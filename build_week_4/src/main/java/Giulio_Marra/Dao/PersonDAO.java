@@ -1,9 +1,10 @@
 package Giulio_Marra.Dao;
 
-import Giulio_Marra.entities.*;
+import Giulio_Marra.entities.Card;
+import Giulio_Marra.entities.Person;
+import Giulio_Marra.entities.Subscription;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 import java.time.LocalDate;
@@ -29,21 +30,21 @@ public class PersonDAO {
     }
 
 
-    public Card getCardByNumber(long cardNumber){
-        TypedQuery<Card> query=em.createQuery("SELECT c FROM Card c WHERE c.id= :cardNumber",Card.class);
+    public Card getCardByNumber(long cardNumber) {
+        TypedQuery<Card> query = em.createQuery("SELECT c FROM Card c WHERE c.id= :cardNumber", Card.class);
         query.setParameter("cardNumber", cardNumber);
         return query.getSingleResult();
     }
 
 
-    public boolean isSubscriptionValid(long cardNumber){
+    public boolean isSubscriptionValid(long cardNumber) {
         Card card = getCardByNumber(cardNumber);
-        if (card == null){
+        if (card == null) {
             return false;
         }
 
         Subscription subscription = card.getSubscription();
-        if (subscription == null){
+        if (subscription == null) {
             return false;
         }
 
@@ -53,7 +54,5 @@ public class PersonDAO {
 
         return currentDate.isBefore(subscriptionRenewDate) || currentDate.isEqual(subscriptionRenewDate);
     }
-
-
 
 }
