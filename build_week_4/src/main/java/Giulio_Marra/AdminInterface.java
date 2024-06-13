@@ -72,7 +72,7 @@ public class AdminInterface {
                         if (transportRoutes.isEmpty()) {
                             System.out.println("Nessuna route trovata per il trasporto con ID " + transportId);
                         } else {
-                            System.out.println("Informazioni sul trasporto e sulla route associata per ID " + transportId + ":");
+                            System.out.println("Informazioni sul trasporto e sulle tratte associata per ID " + transportId + ":");
                             System.out.println("ID del trasporto: " + transport.getId());
                             System.out.println("Tipo di trasporto: " + transport.getTransport_type());
                             System.out.println("Nome del trasporto: " + transport.getName());
