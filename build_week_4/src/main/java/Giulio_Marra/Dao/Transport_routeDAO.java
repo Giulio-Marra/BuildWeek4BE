@@ -1,7 +1,5 @@
 package Giulio_Marra.Dao;
 
-import Giulio_Marra.entities.Route;
-import Giulio_Marra.entities.Transport;
 import Giulio_Marra.entities.Transport_route;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -10,7 +8,6 @@ import jakarta.persistence.TypedQuery;
 import java.util.List;
 
 public class Transport_routeDAO {
-
     private final EntityManager em;
 
     public Transport_routeDAO(EntityManager em) {
@@ -51,30 +48,6 @@ public class Transport_routeDAO {
         query.setParameter("routeId", routeId);
         query.setParameter("transportId", transportId);
         return query.getResultList();
-    }
-
-    public void saveRoute(Route route) {
-        EntityTransaction transaction = em.getTransaction();
-        transaction.begin();
-        em.persist(route);
-        transaction.commit();
-        System.out.println("La rotta: " + route.getTransport_routes() + " è stato aggiunta correttamente al database");
-    }
-
-    public Route getRoute(long id) {
-        return em.find(Route.class, id);
-    }
-
-    public void saveTransport(Transport transport) {
-        EntityTransaction transaction = em.getTransaction();
-        transaction.begin();
-        em.persist(transport);
-        transaction.commit();
-        System.out.println("Il biglietto selezionato con l' id è: " + transport.getName() + " è stato aggiunto correttamente al database");
-    }
-
-    public Transport getTransport(long id) {
-        return em.find(Transport.class, id);
     }
 
 

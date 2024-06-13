@@ -1,5 +1,6 @@
 package Giulio_Marra.entities;
 
+
 import jakarta.persistence.*;
 
 import java.time.LocalDate;

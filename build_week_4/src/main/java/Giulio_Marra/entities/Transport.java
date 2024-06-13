@@ -40,6 +40,7 @@ public class Transport {
         this.name = name;
     }
 
+
     public int totCapacity() {
         if (transport_type == Transport_type.AUTOBUS) {
             return 30;
@@ -112,8 +113,8 @@ public class Transport {
     public String toString() {
         return "Transport{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", transport_type=" + transport_type +
+                ", name='" + name + ' ' +
+        ", transport_type=" + transport_type +
                 ", state=" + state +
                 ", capacity=" + capacity +
                 '}';

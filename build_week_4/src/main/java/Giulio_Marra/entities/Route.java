@@ -67,9 +67,9 @@ public class Route {
     public String toString() {
         return "Route{" +
                 "id=" + id +
-                ", starting_area='" + starting_area + '\'' +
-                ", terminal_area='" + terminal_area + '\'' +
-                ", avg_travel_time=" + avg_travel_time +
+                ", starting_area='" + starting_area + ' ' +
+        ", terminal_area='" + terminal_area + ' ' +
+        ", avg_travel_time=" + avg_travel_time +
                 '}';
     }
 }
