@@ -179,7 +179,7 @@ public class Application {
         //pd.saveTicket(ticket_23);
         //pd.saveTicket(ticket_24);
         //pd.saveTicket(ticket_25);
-        
+
         //Maintenences
         Maintenance maint_1 = new Maintenance(Date.valueOf("2021-01-02").toLocalDate(), Date.valueOf("2021-02-17").toLocalDate(), transport1);
         Maintenance maint_2 = new Maintenance(Date.valueOf("2020-02-15").toLocalDate(), Date.valueOf("2020-07-21").toLocalDate(), transport6);
