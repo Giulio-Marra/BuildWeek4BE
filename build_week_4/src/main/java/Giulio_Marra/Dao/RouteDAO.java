@@ -6,17 +6,20 @@ import jakarta.persistence.EntityTransaction;
 
 public class RouteDAO {
     private final EntityManager em;
-    public RouteDAO(EntityManager em){
+
+    public RouteDAO(EntityManager em) {
         this.em = em;
     }
+
     public void saveRoute(Route route) {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
         em.persist(route);
         transaction.commit();
-        System.out.println("Il mezzo è partito da: " + route.getStarting_area() + " è stato aggiunto correttamente al database");
+        System.out.println("La rotta che parte da: " + route.getStarting_area() + " a: " + route.getTerminal_area() + " è stata aggiunta correttamente al database");
     }
-    public Route getRoute(long id){
-        return em.find(Route.class,id);
+
+    public Route getRoute(long id) {
+        return em.find(Route.class, id);
     }
 }

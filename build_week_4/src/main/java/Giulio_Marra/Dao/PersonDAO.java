@@ -1,9 +1,10 @@
 package Giulio_Marra.Dao;
 
-import Giulio_Marra.entities.*;
+import Giulio_Marra.entities.Card;
+import Giulio_Marra.entities.Person;
+import Giulio_Marra.entities.Subscription;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 import java.time.LocalDate;
@@ -29,8 +30,8 @@ public class PersonDAO {
     }
 
 
-    public Card getCardByNumber(long cardNumber){
-        TypedQuery<Card> query=em.createQuery("SELECT c FROM Card c WHERE c.id= :cardNumber",Card.class);
+    public Card getCardByNumber(long cardNumber) {
+        TypedQuery<Card> query = em.createQuery("SELECT c FROM Card c WHERE c.id= :cardNumber", Card.class);
         query.setParameter("cardNumber", cardNumber);
         return query.getSingleResult();
     }
@@ -50,19 +51,8 @@ public class PersonDAO {
         LocalDate currentDate = LocalDate.now();
         LocalDate subscriptionRenewDate = subscription.getRenew_subscription();
 
-        if (currentDate.isBefore(subscriptionRenewDate) || currentDate.isEqual(subscriptionRenewDate)) {
-            return true;
-        } else {
 
-            LocalDate nuovaDataRinnovo = subscription.calcDateRenew();
-            subscription.setRenew_subscription(nuovaDataRinnovo);
-
-            em.getTransaction().begin();
-            em.merge(subscription);
-            em.getTransaction().commit();
-            return true;
-        }
-
-
+        return currentDate.isBefore(subscriptionRenewDate) || currentDate.isEqual(subscriptionRenewDate);
     }
+
 }

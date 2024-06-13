@@ -6,7 +6,8 @@ import jakarta.persistence.EntityTransaction;
 
 public class SubscriptionDAO {
     private final EntityManager em;
-    public SubscriptionDAO(EntityManager em){
+
+    public SubscriptionDAO(EntityManager em) {
         this.em = em;
     }
 
@@ -15,6 +16,11 @@ public class SubscriptionDAO {
         transaction.begin();
         em.persist(subscription);
         transaction.commit();
-        System.out.println("Il mezzo è partito da: " + subscription.getCard() + " è stato aggiunto correttamente al database");
+        System.out.println("La sottoscrizione della tessera: " + subscription.getCard() + " è stata aggiunta correttamente al database");
     }
+
+    public Subscription getSubscription(long id) {
+        return em.find(Subscription.class, id);
+    }
+
 }

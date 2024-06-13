@@ -22,6 +22,10 @@ public class Ticket {
     @JoinColumn(name = "transport_id")
     private Transport transport;
 
+    @ManyToOne
+    @JoinColumn(name = "route_id")
+    private Route route;
+
     private LocalDate emission_date;
 
     public Ticket() {
