@@ -36,24 +36,33 @@ public class PersonDAO {
     }
 
 
-    public boolean isSubscriptionValid(long cardNumber){
+    public boolean isSubscriptionValid(long cardNumber) {
         Card card = getCardByNumber(cardNumber);
-        if (card == null){
+        if (card == null) {
             return false;
         }
 
         Subscription subscription = card.getSubscription();
-        if (subscription == null){
+        if (subscription == null) {
             return false;
         }
 
         LocalDate currentDate = LocalDate.now();
         LocalDate subscriptionRenewDate = subscription.getRenew_subscription();
 
+        if (currentDate.isBefore(subscriptionRenewDate) || currentDate.isEqual(subscriptionRenewDate)) {
+            return true;
+        } else {
 
-        return currentDate.isBefore(subscriptionRenewDate) || currentDate.isEqual(subscriptionRenewDate);
+            LocalDate nuovaDataRinnovo = subscription.calcDateRenew();
+            subscription.setRenew_subscription(nuovaDataRinnovo);
+
+            em.getTransaction().begin();
+            em.merge(subscription);
+            em.getTransaction().commit();
+            return true;
+        }
+
+
     }
-
-
-
 }
