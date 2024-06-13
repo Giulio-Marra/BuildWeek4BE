@@ -77,4 +77,13 @@ public class TransportDAO {
             System.out.println("---------------------------------------------------");
         }
     }
+
+    public void getTransportsByRouteID(long routeID) {
+        TypedQuery<Transport> query = em.createQuery("SELECT t FROM Transport t WHERE t.route.id = :routeID AND t.state = false", Transport.class);
+        query.setParameter("routeID", routeID);
+        List<Transport> transports = query.getResultList();
+        for (Transport transport : transports) {
+            System.out.println(transport);
+        }
+    }
 }

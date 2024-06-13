@@ -22,4 +22,10 @@ public class SellerDAO {
         transaction.commit();
         System.out.println("Il venditore: " + seller.getName() + " è stato aggiunto al database");
     }
+
+    public void printAllSellers() {
+        for (Seller seller : em.createQuery("SELECT s FROM Seller s", Seller.class).getResultList()) {
+            System.out.println(seller);
+        }
+    }
 }

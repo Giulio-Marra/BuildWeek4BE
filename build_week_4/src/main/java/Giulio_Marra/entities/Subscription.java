@@ -36,6 +36,15 @@ public class Subscription {
         this.seller = seller;
         this.emission_date = calculateEmissionDate(seller);
     }
+
+        public Subscription(Periodicity periodicity, Card card, Seller seller) {
+            this.periodicity = periodicity;
+            this.start_subscription = LocalDate.now();
+            this.renew_subscription = calcDateRenew();
+            this.card = card;
+            this.seller = seller;
+            this.emission_date = calculateEmissionDate(seller);
+    }
     public LocalDate calcDateRenew() {
         if (periodicity == Periodicity.WEEKLY) {
             return start_subscription.plusWeeks(1);
@@ -96,10 +105,10 @@ public class Subscription {
     @Override
     public String toString() {
         return "Subscription{" +
-                "id=" + id +
-                ", periodicity=" + periodicity +
-                ", start_subscription=" + start_subscription +
-                ", renew_subscription=" + renew_subscription +
+                "id = " + id +
+                ", periodicità = " + periodicity +
+                ", inizio abbonamento = " + start_subscription +
+                ", scadenza abbonamento = " + renew_subscription +
                 '}';
     }
 }

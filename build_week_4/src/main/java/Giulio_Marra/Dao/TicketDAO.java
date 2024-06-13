@@ -9,6 +9,7 @@ import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class TicketDAO {
 
@@ -67,5 +68,14 @@ public class TicketDAO {
 
     public Ticket getTicket(long id) {
         return em.find(Ticket.class, id);
+    }
+
+    public void printTicketsByRouteID(long id) {
+        TypedQuery<Ticket> query = em.createQuery("SELECT t FROM Ticket t WHERE t.transport.route.id = :id AND used = false", Ticket.class);
+        query.setParameter("id", id);
+        List<Ticket> results = query.getResultList();
+        for (Ticket result : results) {
+            System.out.println(result);
+        }
     }
 }
