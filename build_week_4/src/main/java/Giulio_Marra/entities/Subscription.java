@@ -36,16 +36,16 @@ public class Subscription {
         this.seller = seller;
         this.emission_date = calculateEmissionDate(seller);
     }
-    private LocalDate calcDateRenew() {
+    public LocalDate calcDateRenew() {
         if (periodicity == Periodicity.WEEKLY) {
             return start_subscription.plusWeeks(1);
         } else if (periodicity == Periodicity.MONTHLY) {
             return start_subscription.plusMonths(1);
         } else {
-
             return start_subscription;
         }
     }
+
     private LocalDate calculateEmissionDate(Seller seller) {
         return LocalDate.now();
     }
