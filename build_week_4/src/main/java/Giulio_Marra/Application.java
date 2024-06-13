@@ -89,11 +89,11 @@ public class Application {
         //rd.saveRoute(route_5);
 
         //Mezzo di trasporto
-        Transport transport_1 = new Transport(Transport_type.AUTOBUS, false, "Tomas");
-        Transport transport_2 = new Transport(Transport_type.TRAM, false, "2");
-        Transport transport_3 = new Transport(Transport_type.AUTOBUS, false, "5");
-        Transport transport_4 = new Transport(Transport_type.TRAM, false, "8");
-        Transport transport_5 = new Transport(Transport_type.TRAM, false, "A231");
+        Transport transport_1 = new Transport(Transport_type.AUTOBUS, false, "Tomas", route_1);
+        Transport transport_2 = new Transport(Transport_type.TRAM, false, "2", route_2);
+        Transport transport_3 = new Transport(Transport_type.AUTOBUS, false, "5", route_3);
+        Transport transport_4 = new Transport(Transport_type.TRAM, false, "8", route_4);
+        Transport transport_5 = new Transport(Transport_type.TRAM, false, "A231", route_5);
         //Salvataggio
         //trd.saveTrans(transport_1);
         //trd.saveTrans(transport_2);
@@ -128,31 +128,31 @@ public class Application {
         //sbd.saveSubscription(subscription_6);
 
         //Biglietti
-        Ticket ticket_1=new Ticket(false, seller_1);
-        Ticket ticket_2=new Ticket(false, seller_2);
-        Ticket ticket_3=new Ticket(false, seller_2);
-        Ticket ticket_4=new Ticket(false, seller_1);
-        Ticket ticket_5=new Ticket(false, seller_1);
-        Ticket ticket_6=new Ticket(false, seller_2);
-        Ticket ticket_7=new Ticket(false, seller_1);
-        Ticket ticket_8=new Ticket(false, seller_2);
-        Ticket ticket_9=new Ticket(false, seller_1);
-        Ticket ticket_10=new Ticket(false, seller_1);
-        Ticket ticket_11=new Ticket(false, seller_2);
-        Ticket ticket_12=new Ticket(false, seller_2);
-        Ticket ticket_13=new Ticket(false, seller_1);
-        Ticket ticket_14=new Ticket(false, seller_1);
-        Ticket ticket_15=new Ticket(false, seller_2);
-        Ticket ticket_16=new Ticket(false, seller_1);
-        Ticket ticket_17=new Ticket(false, seller_2);
-        Ticket ticket_18=new Ticket(false, seller_2);
-        Ticket ticket_19=new Ticket(false, seller_2);
-        Ticket ticket_20=new Ticket(false, seller_1);
-        Ticket ticket_21=new Ticket(false, seller_2);
-        Ticket ticket_22=new Ticket(false, seller_1);
-        Ticket ticket_23=new Ticket(false, seller_1);
-        Ticket ticket_24=new Ticket(false, seller_1);
-        Ticket ticket_25=new Ticket(false, seller_2);
+        Ticket ticket_1=new Ticket(false, seller_1, route_1);
+        Ticket ticket_2=new Ticket(false, seller_2, route_1);
+        Ticket ticket_3=new Ticket(false, seller_2, route_1);
+        Ticket ticket_4=new Ticket(false, seller_1, route_1);
+        Ticket ticket_5=new Ticket(false, seller_1, route_2);
+        Ticket ticket_6=new Ticket(false, seller_2, route_2);
+        Ticket ticket_7=new Ticket(false, seller_1, route_2);
+        Ticket ticket_8=new Ticket(false, seller_2, route_2);
+        Ticket ticket_9=new Ticket(false, seller_1, route_3);
+        Ticket ticket_10=new Ticket(false, seller_1, route_3);
+        Ticket ticket_11=new Ticket(false, seller_2, route_3);
+        Ticket ticket_12=new Ticket(false, seller_2, route_3);
+        Ticket ticket_13=new Ticket(false, seller_1, route_3);
+        Ticket ticket_14=new Ticket(false, seller_1, route_3);
+        Ticket ticket_15=new Ticket(false, seller_2, route_3);
+        Ticket ticket_16=new Ticket(false, seller_1, route_4);
+        Ticket ticket_17=new Ticket(false, seller_2, route_4);
+        Ticket ticket_18=new Ticket(false, seller_2, route_4);
+        Ticket ticket_19=new Ticket(false, seller_2, route_4);
+        Ticket ticket_20=new Ticket(false, seller_1, route_4);
+        Ticket ticket_21=new Ticket(false, seller_2, route_4);
+        Ticket ticket_22=new Ticket(false, seller_1, route_5);
+        Ticket ticket_23=new Ticket(false, seller_1, route_5);
+        Ticket ticket_24=new Ticket(false, seller_1, route_5);
+        Ticket ticket_25=new Ticket(false, seller_2, route_5);
         //Salvataggio
         //pd.saveTicket(ticket_1);
         //pd.saveTicket(ticket_2);
@@ -206,8 +206,8 @@ public class Application {
         //METODO PER IL CONTROLLO DEL ABBONAMENTO:
         long card_3_id = (17L);
         long card_4_id = (16L);
-        boolean isCard3Valid = pd.isSubscriptionValid(card_3_id);
-        boolean isCard4Valid = pd.isSubscriptionValid(card_4_id);
+        boolean isCard3Valid = sbd.isSubscriptionValid(card_3_id);
+        boolean isCard4Valid = sbd.isSubscriptionValid(card_4_id);
         System.out.println("Validità degli abbonamenti:");
         if (isCard3Valid) {
             System.out.println("L'abbonamento di " + user_6.getName() + " " + user_6.getSurname() + " è valido.");
