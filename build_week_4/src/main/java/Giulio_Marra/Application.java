@@ -2,7 +2,8 @@ package Giulio_Marra;
 
 import Giulio_Marra.Dao.*;
 import Giulio_Marra.entities.*;
-import Giulio_Marra.enums.periodicity;
+import Giulio_Marra.enums.Transport_type;
+import Giulio_Marra.enums.Periodicity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -23,6 +24,7 @@ public class Application {
         SellerDAO sd=new SellerDAO(em);
         SubscriptionDAO sbd=new SubscriptionDAO(em);
         TransportDAO trd=new TransportDAO(em);
+        Transport_routeDAO trans_rD = new Transport_routeDAO(em);
 
 
         //Creazione degli utenti:
@@ -44,14 +46,14 @@ public class Application {
         //pd.saveSeller(authorized_seller);
 
         //Rotta creata Numero1:
-        Route route_1= new Route("Napoli","Roma",2.50);
+        Route route_1= new Route("Napoli","Roma",2);
         //Salvataggio Rotta
         //pd.saveRoute(route_1);
 
         //Mezzo di trasporto con rotta:
         Route routeCollegata=rd.getRoute(1);
-        Transport transport_1=new Transport(transport_type.AUTOBUS,false,"Tomas",routeCollegata);
-        //pd.saveTrans(transport_1);
+        Transport transport_1=new Transport(Transport_type.AUTOBUS,false,"Tomas");
+        //trd.saveTrans(transport_1);
 
 
 
@@ -62,7 +64,7 @@ public class Application {
         Seller seller_1=sd.getSeller(1);
        Card card_1=new Card(LocalDate.now().plusYears(1),LocalDate.now(),person_1);
        //pd.saveCard(card_1);
-       Subscription subscription_1=new Subscription(periodicity.MONTHLY,LocalDate.now(),Card_2,seller_1);
+       Subscription subscription_1=new Subscription(Periodicity.MONTHLY,LocalDate.now(),Card_2,seller_1);
        //pd.saveSubscription(subscription_1);
 
         Transport transport1=trd.getTransport(1);
@@ -97,14 +99,14 @@ public class Application {
 
 
 
-        Subscription subscription_3 = new Subscription(periodicity.MONTHLY, LocalDate.now(), card_3, distributor);
-        Subscription subscription_4 = new Subscription(periodicity.MONTHLY, LocalDate.now().minusMonths(1), card_4, distributor);
+        Subscription subscription_3 = new Subscription(Periodicity.MONTHLY, LocalDate.now(), card_3, distributor);
+        Subscription subscription_4 = new Subscription(Periodicity.MONTHLY, LocalDate.now().minusMonths(1), card_4, distributor);
         //pd.saveSubscription(subscription_3);
         //pd.saveSubscription(subscription_4);
 
         Route route_2= new Route("Napoli","Milano",6);
-        Route route_3= new Route("Verona","Parma",3.4);
-        Route route_4= new Route("Milano","Scilla",11.30);
+        Route route_3= new Route("Verona","Parma",3);
+        Route route_4= new Route("Milano","Scilla",11);
         //pd.saveRoute(route_2);
         //pd.saveRoute(route_3);
         //pd.saveRoute(route_4);
@@ -115,14 +117,13 @@ public class Application {
         Route route3Collegata=rd.getRoute(3);
         Route route4Collegata=rd.getRoute(4);
 
-        Transport transport_2=new Transport(transport_type.TRAM,false,"5",route2Collegata);
-        Transport transport_3=new Transport(transport_type.TRAM,false,"3",route3Collegata);
-        Transport transport_4=new Transport(transport_type.AUTOBUS,false,"600",route4Collegata);
+    Transport transport_2=new Transport(Transport_type.TRAM,false,"2");
+        Transport transport_3=new Transport(Transport_type.AUTOBUS,false,"5");
+        Transport transport_4=new Transport(Transport_type.TRAM,false,"8");
 
-
-        //pd.saveTrans(transport_2);
-        //pd.saveTrans(transport_3);
-       // pd.saveTrans(transport_4);
+        //trd.saveTrans(transport_2);
+        //trd.saveTrans(transport_3);
+        //(trd.saveTrans(transport_4);
 
 
         long card_3_id = (11L);
@@ -162,5 +163,34 @@ public class Application {
         //trd.saveMaintenence(maint_4);
         //trd.saveMaintenence(maint_5);
         //trd.getDateOfMaintenance(6);
+
+
+
+        Route route5 = new Route("Napoli", "Salerno", 120);
+        Transport transport_10 = new Transport(Transport_type.TRAM, false, "A231");
+
+        trd.saveTrans(transport2);
+        rd.saveRoute(route5);
+
+        Route routetrd = rd.getRoute(1);
+        Transport transporttrd = trd.getTransport(1);
+
+        Transport_route transport_route = new Transport_route(transporttrd, routetrd, LocalDate.of(2024, 2, 12));
+
+        trans_rD.saveTransportRoute(transport_route);
+
+        System.out.println(trans_rD.countNumberOfTransportRoute(1, 1));
+        System.out.println(trans_rD.allTotaleTimeTransportRoute(1, 1));
+
+
+
+
+
+
+
+
+
+
+
     }
 }

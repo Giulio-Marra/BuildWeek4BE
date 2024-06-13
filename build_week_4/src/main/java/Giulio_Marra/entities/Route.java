@@ -11,17 +11,17 @@ public class Route {
     private long id;
 
     @OneToMany(mappedBy = "route")
-    private List<Transport> transports;
+    private List<Transport_route> transport_routes;
 
     private String starting_area;
     private String terminal_area;
-    private double avg_travel_time;
+    private int avg_travel_time;
 
 
     public Route() {
     }
 
-    public Route(String starting_area, String terminal_area, double avg_travel_time) {
+    public Route(String starting_area, String terminal_area, int avg_travel_time) {
         this.starting_area = starting_area;
         this.terminal_area = terminal_area;
         this.avg_travel_time = avg_travel_time;
@@ -31,12 +31,12 @@ public class Route {
         return id;
     }
 
-    public List<Transport> getTransports() {
-        return transports;
+    public List<Transport_route> getTransport_routes() {
+        return transport_routes;
     }
 
-    public void setTransports(List<Transport> transports) {
-        this.transports = transports;
+    public void setTransport_routes(List<Transport_route> transport_routes) {
+        this.transport_routes = transport_routes;
     }
 
     public String getStarting_area() {
@@ -55,11 +55,11 @@ public class Route {
         this.terminal_area = terminal_area;
     }
 
-    public double getAvg_travel_time() {
+    public int getAvg_travel_time() {
         return avg_travel_time;
     }
 
-    public void setAvg_travel_time(double avg_travel_time) {
+    public void setAvg_travel_time(int avg_travel_time) {
         this.avg_travel_time = avg_travel_time;
     }
 
@@ -67,9 +67,9 @@ public class Route {
     public String toString() {
         return "Route{" +
                 "id=" + id +
-                ", starting_area='" + starting_area + '\'' +
-                ", terminal_area='" + terminal_area + '\'' +
-                ", avg_travel_time=" + avg_travel_time +
+                ", starting_area='" + starting_area + ' ' +
+        ", terminal_area='" + terminal_area + ' ' +
+        ", avg_travel_time=" + avg_travel_time +
                 '}';
     }
 }

@@ -2,7 +2,7 @@ package Giulio_Marra.Dao;
 
 import Giulio_Marra.entities.Maintenance;
 import Giulio_Marra.entities.Transport;
-import Giulio_Marra.entities.transport_type;
+import Giulio_Marra.enums.Transport_type;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
@@ -52,7 +52,7 @@ public class TransportDAO {
         for (Object[] result : results) {
             Long transportId = (Long) result[0];
             String transportName = (String) result[1];
-            transport_type transportType = (transport_type) result[2];
+            Transport_type transportType = (Transport_type) result[2];
             Boolean currentState = (Boolean) result[3];
             LocalDate maintenanceStartDate = (LocalDate) result[4];
             LocalDate maintenanceEndDate = (LocalDate) result[5];
