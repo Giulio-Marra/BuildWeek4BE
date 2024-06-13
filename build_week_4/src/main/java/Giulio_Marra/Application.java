@@ -67,12 +67,12 @@ public class Application {
         Transport transport2 = trd.getTransport(2);
         Transport transport3 = trd.getTransport(3);
 
-        Ticket ticket_1 = new Ticket(false, seller_1, person_1);
+        Ticket ticket_1 = new Ticket(false, seller_1);
         //td.saveTicket(ticket_1);
-        Ticket ticket_2 = new Ticket(false, seller_1, person_1);
+        Ticket ticket_2 = new Ticket(false, seller_1);
         //td.saveTicket(ticket_2);
 
-        Ticket ticket_3 = new Ticket(false, seller_1, person_1);
+        Ticket ticket_3 = new Ticket(false, seller_1);
         //td.saveTicket(ticket_3);
 
         Ticket ticketFromDB = td.getTicket(4);

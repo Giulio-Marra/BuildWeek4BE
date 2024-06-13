@@ -10,10 +10,6 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private Person user;
-
     private boolean used;
 
     private LocalDate used_date;
@@ -27,15 +23,14 @@ public class Ticket {
     private Transport transport;
 
     private LocalDate emission_date;
+
     public Ticket() {
     }
 
-    public Ticket(boolean used, Seller seller, Person person  ) {
+    public Ticket(boolean used, Seller seller) {
         this.used = used;
         this.used_date = used_date_date();
         this.seller = seller;
-        this.user = person;
-
         this.emission_date = calculateEmissionDate(seller);
     }
 
@@ -53,14 +48,6 @@ public class Ticket {
 
     public long getId() {
         return id;
-    }
-
-    public Person getUser() {
-        return user;
-    }
-
-    public void setUser(Person user) {
-        this.user = user;
     }
 
     public boolean isUsed() {
