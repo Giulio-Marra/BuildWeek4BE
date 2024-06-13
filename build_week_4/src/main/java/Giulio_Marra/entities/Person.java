@@ -2,8 +2,6 @@ package Giulio_Marra.entities;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 public class Person {
     @Id
@@ -15,9 +13,6 @@ public class Person {
 
     @OneToOne(mappedBy = "user")
     private Card card;
-
-    @OneToMany(mappedBy = "user")
-    private List<Ticket> ticket;
 
     public Person() {
 
@@ -55,14 +50,6 @@ public class Person {
 
     public void setCard(Card card) {
         this.card = card;
-    }
-
-    public List<Ticket> getTicket() {
-        return ticket;
-    }
-
-    public void setTicket(List<Ticket> ticket) {
-        this.ticket = ticket;
     }
 
     @Override
