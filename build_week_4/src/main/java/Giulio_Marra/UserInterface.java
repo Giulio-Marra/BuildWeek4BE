@@ -30,7 +30,7 @@ public class UserInterface {
 
 
         while(true){
-            System.out.println("Seleziona 1 per acquistare un biglietto/abbonamento, 2 per controllare lo stato del tuo abbonamento, 3 per scegliere la tratta, 0 per uscire");
+            System.out.println("Seleziona\n1 per acquistare un biglietto/abbonamento\n2 per controllare lo stato del tuo abbonamento\n3 per scegliere la tratta\n0 per uscire");
             String response = scanner.nextLine();
             if (response.equals("0")){
                 break;
@@ -90,8 +90,14 @@ public class UserInterface {
 
 
 
-                            }else{
-                                System.out.println("Tessera non trovata o scaduta.");
+                            }else if(cd.getCard(card_id) == null){
+                                System.out.println("Tessera non trovata");
+                            }else if(cd.isCardExpired(card_id)){
+                                System.out.println("Tessera scaduta, vuoi rinnovarla ? 1 per si, 2 per no");
+                                String resp = scanner.nextLine();
+                                if(resp.equals("1")){
+                                    cd.renewCardExpiration(card_id);
+                                }
                             }
 
 

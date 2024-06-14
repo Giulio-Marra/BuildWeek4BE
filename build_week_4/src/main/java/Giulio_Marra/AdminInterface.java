@@ -83,7 +83,7 @@ public class AdminInterface {
                                 System.out.println("ID Route: " + route.getId());
                                 System.out.println("Starting Area: " + route.getStarting_area());
                                 System.out.println("Terminal Area: " + route.getTerminal_area());
-                                System.out.println("Average Travel Time: " + route.getAvg_travel_time() +  " " + "Ore");
+                                System.out.println("Average Travel Time: " + route.getAvg_travel_time() +  " " + "minuti");
                                 System.out.println("-------------------------");
                             }
                         }
