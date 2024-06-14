@@ -21,7 +21,13 @@ public class TransportDAO {
 
 
     public List<Transport> getTransportsInMaintenance() {
-        TypedQuery<Transport> query = em.createQuery("SELECT m.transport FROM Maintenance m WHERE m.ending_date >= CURRENT_DATE", Transport.class);
+        TypedQuery<Transport> query = em.createQuery(
+                "SELECT t " +
+                        "FROM Transport t " +
+                        "JOIN Maintenance m ON t.id = m.transport.id " +
+                        "WHERE m.ending_date IS NULL",
+                Transport.class
+        );
         return query.getResultList();
     }
 
