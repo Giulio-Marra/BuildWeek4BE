@@ -12,18 +12,22 @@ import java.util.List;
 
 public class TransportDAO {
     private final EntityManager em;
-
-    public TransportDAO(EntityManager em) {
+    public TransportDAO(EntityManager em){
         this.em = em;
     }
-
-    public Transport getTransport(long id) {
-        return em.find(Transport.class, id);
+    public Transport getTransport(long id){
+        return em.find(Transport.class,id);
     }
 
 
     public List<Transport> getTransportsInMaintenance() {
-        TypedQuery<Transport> query = em.createQuery("SELECT t FROM Transport t JOIN t.maintenances m WHERE m.ending_date IS NULL", Transport.class);
+        TypedQuery<Transport> query = em.createQuery(
+                "SELECT t " +
+                        "FROM Transport t " +
+                        "JOIN Maintenance m ON t.id = m.transport.id " +
+                        "WHERE m.ending_date IS NULL",
+                Transport.class
+        );
         return query.getResultList();
     }
 
@@ -34,7 +38,6 @@ public class TransportDAO {
         transaction.commit();
         System.out.println("L'utente " + transport.getTransport_type() + " è stato aggiunto correttamente al database");
     }
-
     public void saveMaintenence(Maintenance maintenence) {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
@@ -42,7 +45,6 @@ public class TransportDAO {
         transaction.commit();
         System.out.println("Il mezzo " + maintenence.getTransport() + " è in manutenzione al database");
     }
-
     public void getDateOfMaintenance(long id) {
         TypedQuery<Object[]> query = em.createQuery(
                 "SELECT " +
