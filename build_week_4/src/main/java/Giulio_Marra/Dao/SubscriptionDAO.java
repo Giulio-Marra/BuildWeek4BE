@@ -79,7 +79,7 @@ public class SubscriptionDAO {
     }
 
     public void renewMonthlySubscription (Subscription subscription) {
-        TypedQuery<Subscription> query = em.createQuery("SELECT s FROM Subscription s WHERE s.id_card = :id", Subscription.class);
+        TypedQuery<Subscription> query = em.createQuery("SELECT s FROM Subscription s WHERE s.card.id = :id", Subscription.class);
         query.setParameter("id", subscription.getId());
         Subscription result = query.getSingleResult();
         result.setPeriodicity(Periodicity.MONTHLY);

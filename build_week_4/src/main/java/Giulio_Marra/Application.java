@@ -21,7 +21,7 @@ public class Application {
 
         /*
         //CREAZIONE UTENTI
-       /* Person giulio = new Person("giulio", "Marra");
+        Person giulio = new Person("giulio", "Marra");
         Person carlo = new Person("carlo", "patalano");
         Person francesco = new Person("francesco", "cossu");
         Person davide = new Person("davide", "prelati");
@@ -200,14 +200,14 @@ public class Application {
         sbd.saveSubscription(subscription3);
         sbd.saveSubscription(subscription4);
 
-        /*Subscription subscription_dao_1 = sbd.getSubscription(1);
+        Subscription subscription_dao_1 = sbd.getSubscription(1);
         Subscription subscription_dao_2 = sbd.getSubscription(2);
         Subscription subscription_dao_3 = sbd.getSubscription(3);
-        Subscription subscription_dao_4 = sbd.getSubscription(4);*/
+        Subscription subscription_dao_4 = sbd.getSubscription(4);
 
         /*
         //CREAZIONE MANUTENZIONI
-       /* Maintenance maintenance1 = new Maintenance(LocalDate.now(), null, transport_4_dao);
+        Maintenance maintenance1 = new Maintenance(LocalDate.now(), null, transport_4_dao);
         Maintenance maintenance2 = new Maintenance(LocalDate.of(2024, 5, 1), null, transport_5_dao);
         Maintenance maintenance3 = new Maintenance(LocalDate.of(2024, 2, 12), null, transport_8_dao);
         Maintenance maintenance4 = new Maintenance(LocalDate.of(2023, 12, 3), LocalDate.of(2024, 2, 4), transport_1_dao);

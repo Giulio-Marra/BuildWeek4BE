@@ -71,11 +71,11 @@ public class TicketDAO {
     }
 
     public void printTicketsByRouteID(long id) {
-        TypedQuery<Ticket> query = em.createQuery("SELECT t FROM Ticket t WHERE t.transport.route.id = :id AND used = false", Ticket.class);
+        TypedQuery<Ticket> query = em.createQuery("SELECT t FROM Ticket t WHERE t.route.id = :id AND used = false", Ticket.class);
         query.setParameter("id", id);
-        List<Ticket> results = query.getResultList();
-        for (Ticket result : results) {
-            System.out.println(result);
+        List<Ticket> result = query.getResultList();
+        for (Ticket ticket : result) {
+            System.out.println(ticket);
         }
     }
 }
