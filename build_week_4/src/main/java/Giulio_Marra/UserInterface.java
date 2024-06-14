@@ -7,6 +7,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -22,7 +23,7 @@ public class UserInterface {
         SellerDAO sd = new SellerDAO(em);
         SubscriptionDAO sbd = new SubscriptionDAO(em);
         TransportDAO trd = new TransportDAO(em);
-        Transport_routeDAO trans_rD = new Transport_routeDAO(em);
+        Transport_routeDAO trrd = new Transport_routeDAO(em);
 
 
 
@@ -142,16 +143,26 @@ public class UserInterface {
                         Ticket ticket = td.getTicket(id_biglietto);
                         td.stampTicket(ticket, transport);
                         System.out.println("Biglietto timbrato, buon viaggio!");
+                        Transport_route transroute = new Transport_route(transport, route, LocalDate.now());
+                        trrd.saveTransportRoute(transroute);
+
                         break;
                     }else if (respon.equals("2")){
                         System.out.println("inserisci l'id della tessera");
                         long id_tessera2 = Long.parseLong(scanner.nextLine());
                         Subscription sub2 = sbd.returnSubscriptionByCardID(id_tessera2);
                          sbd.getSubscriptionByCardID(id_tessera2);
-                        if (sbd.isSubscriptionValid(id_tessera2) && !sbd.isSubscriptionExpired(sub2)) {
-                            System.out.println("Abbonamento valido, buon viaggio!");
+                         if(cd.isCardExpired(id_tessera2)){
+                             System.out.println("Questa tessera è scaduta.");
+                             break;
+                         }else if (sbd.isSubscriptionValid(id_tessera2) && !sbd.isSubscriptionExpired(sub2)) {
+                             System.out.println("Abbonamento valido, buon viaggio!");
+                             Transport_route transroute = new Transport_route(transport, route, LocalDate.now());
+                             trrd.saveTransportRoute(transroute);
+                             break;
                         } else {
                             System.out.println("L'abbonamento è scaduto.");
+                            break;
 
                         }
 
