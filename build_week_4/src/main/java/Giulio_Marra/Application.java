@@ -1,14 +1,9 @@
 package Giulio_Marra;
 
 import Giulio_Marra.Dao.*;
-import Giulio_Marra.entities.*;
-import Giulio_Marra.enums.Periodicity;
-import Giulio_Marra.enums.Transport_type;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-
-import java.time.LocalDate;
 
 public class Application {
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("build_week_4");
@@ -24,7 +19,7 @@ public class Application {
         TransportDAO trd = new TransportDAO(em);
         Transport_routeDAO trans_rD = new Transport_routeDAO(em);
 
-
+        /*
         //CREAZIONE UTENTI
         Person giulio = new Person("giulio", "Marra");
         Person carlo = new Person("carlo", "patalano");
@@ -210,6 +205,7 @@ public class Application {
         Subscription subscription_dao_3 = sbd.getSubscription(3);
         Subscription subscription_dao_4 = sbd.getSubscription(4);*/
 
+        /*
         //CREAZIONE MANUTENZIONI
         Maintenance maintenance1 = new Maintenance(LocalDate.now(), null, transport_4_dao);
         Maintenance maintenance2 = new Maintenance(LocalDate.of(2024, 5, 1), null, transport_5_dao);
@@ -293,6 +289,7 @@ public class Application {
         trans_rD.saveTransportRoute(transport_route23);
         trans_rD.saveTransportRoute(transport_route24);
         trans_rD.saveTransportRoute(transport_route25);
+        */
 
 
 
