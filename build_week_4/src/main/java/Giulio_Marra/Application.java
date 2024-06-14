@@ -205,10 +205,10 @@ public class Application {
         sbd.saveSubscription(subscription3);
         sbd.saveSubscription(subscription4);
 
-        Subscription subscription_dao_1 = sbd.getSubscription(1);
+        /*Subscription subscription_dao_1 = sbd.getSubscription(1);
         Subscription subscription_dao_2 = sbd.getSubscription(2);
         Subscription subscription_dao_3 = sbd.getSubscription(3);
-        Subscription subscription_dao_4 = sbd.getSubscription(4);
+        Subscription subscription_dao_4 = sbd.getSubscription(4);*/
 
         //CREAZIONE MANUTENZIONI
         Maintenance maintenance1 = new Maintenance(LocalDate.now(), null, transport_4_dao);
@@ -241,20 +241,62 @@ public class Application {
         trd.saveMaintenence(maintenance13);
         trd.saveMaintenence(maintenance14);
 
-        Maintenance maintenance_dao_1 = trd.getDateOfMaintenance(1);
-        Maintenance maintenance_dao_2 = trd.getDateOfMaintenance(2);
-        Maintenance maintenance_dao_3 = trd.getDateOfMaintenance(3);
-        Maintenance maintenance_dao_4 = trd.getDateOfMaintenance(4);
-        Maintenance maintenance_dao_5 = trd.getDateOfMaintenance(5);
-        Maintenance maintenance_dao_6 = trd.getDateOfMaintenance(6);
-        Maintenance maintenance_dao_7 = trd.getDateOfMaintenance(7);
-        Maintenance maintenance_dao_8 = trd.getDateOfMaintenance(8);
-        Maintenance maintenance_dao_9 = trd.getDateOfMaintenance(9);
-        Maintenance maintenance_dao_1 = trd.getDateOfMaintenance(10);
-        Maintenance maintenance_dao_1 = trd.getDateOfMaintenance(11);
-        Maintenance maintenance_dao_1 = trd.getDateOfMaintenance(12);
-        Maintenance maintenance_dao_1 = trd.getDateOfMaintenance(13);
-        Maintenance maintenance_dao_1 = trd.getDateOfMaintenance(14);
+        //MEZZO_TRATTA
+        Transport_route transport_route1 = new Transport_route(transport_1_dao, route_dao_1, LocalDate.of(2024, 1, 21));
+        Transport_route transport_route2 = new Transport_route(transport_1_dao, route_dao_1, LocalDate.of(2024, 2, 12));
+        Transport_route transport_route3 = new Transport_route(transport_1_dao, route_dao_1, LocalDate.of(2024, 3, 10));
+        Transport_route transport_route4 = new Transport_route(transport_2_dao, route_dao_2, LocalDate.of(2024, 1, 12));
+        Transport_route transport_route5 = new Transport_route(transport_2_dao, route_dao_2, LocalDate.of(2024, 1, 21));
+        Transport_route transport_route6 = new Transport_route(transport_3_dao, route_dao_3, LocalDate.of(2024, 2, 12));
+        Transport_route transport_route7 = new Transport_route(transport_3_dao, route_dao_3, LocalDate.of(2024, 2, 1));
+        Transport_route transport_route8 = new Transport_route(transport_3_dao, route_dao_3, LocalDate.of(2024, 3, 6));
+        Transport_route transport_route9 = new Transport_route(transport_4_dao, route_dao_4, LocalDate.of(2024, 1, 12));
+        Transport_route transport_route10 = new Transport_route(transport_4_dao, route_dao_4, LocalDate.of(2024, 1, 4));
+        Transport_route transport_route11 = new Transport_route(transport_4_dao, route_dao_4, LocalDate.of(2024, 2, 12));
+        Transport_route transport_route12 = new Transport_route(transport_4_dao, route_dao_4, LocalDate.of(2024, 4, 12));
+        Transport_route transport_route13 = new Transport_route(transport_5_dao, route_dao_5, LocalDate.of(2024, 1, 1));
+        Transport_route transport_route14 = new Transport_route(transport_5_dao, route_dao_5, LocalDate.of(2024, 1, 12));
+        Transport_route transport_route15 = new Transport_route(transport_6_dao, route_dao_5, LocalDate.of(2024, 2, 11));
+        Transport_route transport_route16 = new Transport_route(transport_7_dao, route_dao_1, LocalDate.of(2023, 1, 5));
+        Transport_route transport_route17 = new Transport_route(transport_7_dao, route_dao_1, LocalDate.of(2023, 2, 5));
+        Transport_route transport_route18 = new Transport_route(transport_7_dao, route_dao_1, LocalDate.of(2023, 2, 12));
+        Transport_route transport_route19 = new Transport_route(transport_8_dao, route_dao_2, LocalDate.of(2024, 1, 5));
+        Transport_route transport_route20 = new Transport_route(transport_8_dao, route_dao_3, LocalDate.of(2024, 2, 12));
+        Transport_route transport_route21 = new Transport_route(transport_9_dao, route_dao_4, LocalDate.of(2024, 3, 7));
+        Transport_route transport_route22 = new Transport_route(transport_10_dao, route_dao_4, LocalDate.of(2024, 11, 23));
+        Transport_route transport_route23 = new Transport_route(transport_10_dao, route_dao_4, LocalDate.of(2024, 9, 12));
+        Transport_route transport_route24 = new Transport_route(transport_10_dao, route_dao_1, LocalDate.of(2024, 8, 21));
+        Transport_route transport_route25 = new Transport_route(transport_10_dao, route_dao_1, LocalDate.of(2024, 6, 6));
+
+        trans_rD.saveTransportRoute(transport_route1);
+        trans_rD.saveTransportRoute(transport_route2);
+        trans_rD.saveTransportRoute(transport_route3);
+        trans_rD.saveTransportRoute(transport_route4);
+        trans_rD.saveTransportRoute(transport_route5);
+        trans_rD.saveTransportRoute(transport_route6);
+        trans_rD.saveTransportRoute(transport_route7);
+        trans_rD.saveTransportRoute(transport_route8);
+        trans_rD.saveTransportRoute(transport_route9);
+        trans_rD.saveTransportRoute(transport_route10);
+        trans_rD.saveTransportRoute(transport_route11);
+        trans_rD.saveTransportRoute(transport_route12);
+        trans_rD.saveTransportRoute(transport_route13);
+        trans_rD.saveTransportRoute(transport_route14);
+        trans_rD.saveTransportRoute(transport_route15);
+        trans_rD.saveTransportRoute(transport_route16);
+        trans_rD.saveTransportRoute(transport_route17);
+        trans_rD.saveTransportRoute(transport_route18);
+        trans_rD.saveTransportRoute(transport_route19);
+        trans_rD.saveTransportRoute(transport_route20);
+        trans_rD.saveTransportRoute(transport_route21);
+        trans_rD.saveTransportRoute(transport_route22);
+        trans_rD.saveTransportRoute(transport_route23);
+        trans_rD.saveTransportRoute(transport_route24);
+        trans_rD.saveTransportRoute(transport_route25);
+
+
+
+
 
 
 
