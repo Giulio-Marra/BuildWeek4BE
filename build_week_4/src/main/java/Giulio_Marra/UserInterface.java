@@ -92,11 +92,11 @@ public class UserInterface {
 
                             }else{
                                 System.out.println("Tessera non trovata o scaduta.");
-                                break;
-
                             }
 
+
                     }
+                    break;
 
                 case "2":
                     System.out.println("Inserisci l'id della tessera");
@@ -115,9 +115,11 @@ public class UserInterface {
                             switch (resp2) {
                                 case "1":
                                     sbd.renewWeeklySubscription(subscription);
+                                    System.out.println("Abbonamento rinnovato");
                                     break;
                                 case "2":
                                     sbd.renewMonthlySubscription(subscription);
+                                    System.out.println("Abbonamento rinnovato");
                                     break;
                             }
                         }
