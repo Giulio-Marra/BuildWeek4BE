@@ -29,7 +29,9 @@ public class Automatic_seller extends Seller {
     @Override
     public String toString() {
         return "Automatic_seller{" +
-                "state=" + state +
+                "in servizio = " + state +
+                ", id = " + id +
+                ", nome = '" + name + '\'' +
                 '}';
     }
 }

@@ -18,6 +18,13 @@ public class TransportDAO {
     public Transport getTransport(long id){
         return em.find(Transport.class,id);
     }
+
+
+    public List<Transport> getTransportsInMaintenance() {
+        TypedQuery<Transport> query = em.createQuery("SELECT m.transport FROM Maintenance m WHERE m.ending_date >= CURRENT_DATE", Transport.class);
+        return query.getResultList();
+    }
+
     public void saveTrans(Transport transport) {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
@@ -68,6 +75,15 @@ public class TransportDAO {
                 System.out.println("No Maintenance");
             }
             System.out.println("---------------------------------------------------");
+        }
+    }
+
+    public void getTransportsByRouteID(long routeID) {
+        TypedQuery<Transport> query = em.createQuery("SELECT t FROM Transport t WHERE t.route.id = :routeID AND t.state = false", Transport.class);
+        query.setParameter("routeID", routeID);
+        List<Transport> transports = query.getResultList();
+        for (Transport transport : transports) {
+            System.out.println(transport);
         }
     }
 }
