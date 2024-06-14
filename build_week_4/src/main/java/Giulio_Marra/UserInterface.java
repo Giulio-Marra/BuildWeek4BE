@@ -90,8 +90,14 @@ public class UserInterface {
 
 
 
-                            }else{
-                                System.out.println("Tessera non trovata o scaduta.");
+                            }else if(cd.getCard(card_id) == null){
+                                System.out.println("Tessera non trovata");
+                            }else if(cd.isCardExpired(card_id)){
+                                System.out.println("Tessera scaduta, vuoi rinnovarla ? 1 per si, 2 per no");
+                                String resp = scanner.nextLine();
+                                if(resp.equals("1")){
+                                    cd.renewCardExpiration(card_id);
+                                }
                             }
 
 

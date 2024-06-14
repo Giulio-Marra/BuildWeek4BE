@@ -19,7 +19,6 @@ public class Transport_routeDAO {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
         em.persist(transport_route);
-        System.out.println("Il percorso della  " + transport_route.getRoute() + " è stato aggiunto correttamente al database");
 
         long transportId = transport_route.getTransport().getId();
         long routeId = transport_route.getRoute().getId();
